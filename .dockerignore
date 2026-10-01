@@ -1,0 +1,12 @@
+.git
+.github
+.venv
+**/__pycache__
+.pytest_cache
+.ruff_cache
+tests
+docs
+deploy
+signal-theme/assets/banners
+signal-theme/assets/social
+signal-theme/tools

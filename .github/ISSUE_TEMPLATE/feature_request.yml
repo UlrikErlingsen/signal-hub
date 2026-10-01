@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest an improvement to the Hub (a change to one tool belongs in that tool's repository)
+title: "[Idea]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The Hub assembles released tools and holds no analysis logic. Ideas for a tool's analysis go in that tool's repository.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What should the Hub do better?
+      description: Start with what a visitor is trying to do.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What would a useful outcome look like?
+    validations:
+      required: true
