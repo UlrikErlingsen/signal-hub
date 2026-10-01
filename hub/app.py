@@ -33,7 +33,7 @@ for family, members in by_family(APPS).items():
                 url_path=app.slug)
         for app in members
     ]
-current = st.navigation(sections)
+current = st.navigation(sections, expanded=True)
 
 theme.apply()
 current.run()
