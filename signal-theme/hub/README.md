@@ -15,7 +15,7 @@
 |---|---|---|---|
 | <img src="assets/marks/prospectsignal-mark-64.png" width="28" alt=""> | **Prospect Signal** | Norwegian B2B prospecting from open Brønnøysund data | [b2b-prospecting](https://github.com/UlrikErlingsen/b2b-prospecting) |
 | <img src="assets/marks/listensignal-mark-64.png" width="28" alt=""> | **Listen Signal** | Norwegian media and social listening | [media-listening](https://github.com/UlrikErlingsen/media-listening) |
-| <img src="assets/marks/creatorsignal-mark-64.png" width="28" alt=""> | **Creator Signal** | Which creators delivered, and was every post labelled properly? | [influencer-campaigns](https://github.com/UlrikErlingsen/influencer-campaigns) |
+| <img src="assets/marks/influencesignal-mark-64.png" width="28" alt=""> | **Influence Signal** | Which creators delivered, and was every post labelled properly? | [influencer-campaigns](https://github.com/UlrikErlingsen/influencer-campaigns) |
 | <img src="assets/marks/seasonsignal-mark-64.png" width="28" alt=""> | **Season Signal** | The Norwegian marketing year, worked backwards | [marketing-calendar](https://github.com/UlrikErlingsen/marketing-calendar) |
 | <img src="assets/marks/adoptsignal-mark-64.png" width="28" alt=""> | **Adopt Signal** | Know when the market will follow | [adoption-forecasting](https://github.com/UlrikErlingsen/adoption-forecasting) |
 

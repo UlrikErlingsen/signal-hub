@@ -27,7 +27,10 @@ edit the synced copies in an app repo; change `signal-theme/` here and re-sync.
    `sig.hero(...)`, `sig.cards(...)`, `sig.header(...)`, `sig.note("info"|"warn"|"boundary", text)`,
    `sig.footer(key, __version__, line)`. Keep the app's own words (eyebrow, hero title, kicker, promises, footer line).
    Old CSS classes such as `.boundary`, `.warning-box`, `.small-note` become `sig.note(...)` or `st.caption(...)`.
-2. **Charts.** `sig.apply()` registers the `signal` Plotly template (Figtree, family colorway). Remove hard-coded old
+2. **Charts.** `sig.apply()` registers the Plotly templates (Figtree, family colorway). Pass the per-app template to
+   every figure: `template=sig.template(key)` in `px.*` calls, or `fig.update_layout(template=sig.template(key))`
+   for `go.Figure` (the process-wide default is shared across Hub sessions). Use `sig.roles(key)` for semantic
+   colours, not the global `sig.ROLES`. `sig.note("muted", ...)` replaces small-print notes. Remove hard-coded old
    palette colours (`#173C3A`, `#D95B40`, `#83D2B4`, `#F2C66D`, the old per-app greens/teals, etc.). Map them to:
    categorical series → `sig.colorway(key)`; sequential → `sig.sequential(key)`; diverging → `sig.DIVERGING`;
    estimate → `sig.CORE["text"]`; interval/band → `sig.CORE["soft"]`; practical threshold →
