@@ -1,0 +1,21 @@
+# gh repo edit UlrikErlingsen/<repo> --add-topic <t> …  (add 2–3 method topics per repo)
+signal-hub: signal-suite, streamlit, local-first
+brand-tracking: signal-suite, signal-brand, streamlit, local-first
+brand-positioning: signal-suite, signal-brand, streamlit, local-first
+b2b-prospecting: signal-suite, signal-market, streamlit, local-first
+media-listening: signal-suite, signal-market, streamlit, local-first
+influencer-campaigns: signal-suite, signal-market, streamlit, local-first
+marketing-calendar: signal-suite, signal-market, streamlit, local-first
+adoption-forecasting: signal-suite, signal-market, streamlit, local-first
+customer-value-analytics: signal-suite, signal-customer, streamlit, local-first
+customer-segmentation: signal-suite, signal-customer, streamlit, local-first
+journey-path-analysis: signal-suite, signal-customer, streamlit, local-first
+recommender-evaluation: signal-suite, signal-customer, streamlit, local-first
+conjoint-analysis: signal-suite, signal-research, streamlit, local-first
+survey-driver-analysis: signal-suite, signal-research, streamlit, local-first
+measurement-validation: signal-suite, signal-research, streamlit, local-first
+open-text-analysis: signal-suite, signal-research, streamlit, local-first
+pricing-analysis: signal-suite, signal-research, streamlit, local-first
+experiment-analysis: signal-suite, signal-decide, streamlit, local-first
+launch-decision-gate: signal-suite, signal-decide, streamlit, local-first
+marketing-mix-allocation: signal-suite, signal-decide, streamlit, local-first
