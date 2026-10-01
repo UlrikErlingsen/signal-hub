@@ -31,7 +31,7 @@ def _header(app: App, version: str | None) -> None:
     parts = [f"<b>{escape(app.product)}</b>"]
     if version:
         parts.append(f"v{escape(version)}")
-    parts.append("Fictional demo data, preloaded")
+    parts.append("All demo data is fictional")
     if app.repo_url:
         parts.append(f'<a href="{app.repo_url}" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a>')
     if app.demo_url:
