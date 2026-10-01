@@ -1,0 +1,21 @@
+# Signal Hub theme (Brand accent). Each embedded app applies its own family accent on its page.
+
+[theme]
+base = "light"
+primaryColor = "#b2622d"
+backgroundColor = "#f5ead8"
+secondaryBackgroundColor = "#ebddc5"
+textColor = "#201e1d"
+font = "sans serif"
+
+[server]
+headless = true
+maxUploadSize = 50
+fileWatcherType = "none"
+
+[browser]
+gatherUsageStats = false
+
+[client]
+toolbarMode = "viewer"
+showSidebarNavigation = true

@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "signal-hub"
+version = "0.1.0"
+description = "Signal Hub: every Signal marketing-evidence tool behind one link"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "AGPL-3.0-or-later" }
+authors = [{ name = "Ulrik Erlingsen" }]
+keywords = ["marketing analytics", "streamlit", "local-first", "signal-suite"]
+dependencies = [
+  "pyyaml>=6,<7",
+  "streamlit>=1.40,<2",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8,<10",
+  "ruff>=0.8,<1",
+]
+
+[project.urls]
+Homepage = "https://github.com/UlrikErlingsen/signal-hub"
+Source = "https://github.com/UlrikErlingsen/signal-hub"
+Issues = "https://github.com/UlrikErlingsen/signal-hub/issues"
+
+[tool.setuptools]
+packages = ["hub"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["apps: needs every embedded app installed (the CI apps job)"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+src = ["hub", "tests", "scripts"]
+extend-exclude = ["signal-theme/tools"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+
+[tool.ruff.lint.per-file-ignores]
+"hub/app.py" = ["E402"]
+"hub/theme.py" = ["E402"]
+"scripts/*.py" = ["E402"]

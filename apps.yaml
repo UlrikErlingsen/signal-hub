@@ -1,0 +1,283 @@
+# The only place Signal Hub lists apps. The sidebar, the front-page cards, requirements-apps.txt, the theme sync
+# and the smoke tests are all generated from this file. To update an app: release it (bump version, CHANGELOG,
+# tag vX.Y.Z), change its `tag:` line here, run the tests, redeploy.
+#
+# slug      short id; also the session-state namespace inside the Hub ("track:raw_data")
+# key       signal_theme.APPS key (mark, family colour, tagline)
+# product   display name, with a space
+# repo      GitHub repo under UlrikErlingsen
+# dist      pip distribution name (pyproject [project].name)
+# package   import name (src/<package>)
+# tag       released tag the Hub pins
+# family    Brand | Market | Customer | Research | Decide  (the sidebar section)
+# mode      embedded (package exposes <package>.ui.render) | link (open demo_url) | coming_soon
+# public    false while the repo is private; the Hub then shows no source link
+# question  the one question the app answers (from the README)
+# one_liner the README's promise line
+# methods   2-4 method chips for the cards
+
+- slug: track
+  key: track
+  product: Track Signal
+  repo: brand-tracking
+  dist: tracksignal
+  package: tracksignal
+  tag: v1.1.0
+  family: Brand
+  mode: embedded
+  public: true
+  question: Is the brand moving, or is the tracker just noisy?
+  one_liner: Brand-tracking waves compared with intervals, multiple-comparison control and practical thresholds, so real movement is separated from sampling noise.
+  methods: [Wilson intervals, Wave contrasts, BH control]
+
+- slug: position
+  key: position
+  product: Position Signal
+  repo: brand-positioning
+  dist: positionsignal
+  package: positionsignal
+  tag: v1.2.0
+  family: Brand
+  mode: embedded
+  public: true
+  question: Where do brands sit relative to competitors?
+  one_liner: Auditable positioning across brands, waves and segments, with map fidelity, association ownership and POP/POD evidence beside the picture.
+  methods: [PCA, Biplot, POP / POD]
+
+- slug: prospect
+  key: prospect
+  product: Prospect Signal
+  repo: b2b-prospecting
+  dist: prospectsignal
+  package: prospectsignal
+  tag: null
+  family: Market
+  mode: coming_soon
+  public: false
+  question: Which Norwegian companies fit your ideal customer, and which first?
+  one_liner: Ideal-customer filters, market size and shortlists built from open Brønnøysund company data, run locally.
+  methods: [Brønnøysund, ICP filters, Shortlists]
+
+- slug: listen
+  key: listen
+  product: Listen Signal
+  repo: media-listening
+  dist: listensignal
+  package: listensignal
+  tag: null
+  family: Market
+  mode: coming_soon
+  public: false
+  question: Who is talking about the brand in Norwegian media, and in what tone?
+  one_liner: Mentions, share of voice and Norwegian-language sentiment from media and social sources, run locally.
+  methods: [Mentions, Share of voice, Norwegian sentiment]
+
+- slug: influence
+  key: influence
+  product: Influence Signal
+  repo: influencer-campaigns
+  dist: influencesignal
+  package: influencesignal
+  tag: null
+  family: Market
+  mode: coming_soon
+  public: false
+  question: Which creators delivered, and was every post labelled properly?
+  one_liner: A local-first influencer campaign manager for the Norwegian market, with an advertising-label checklist on every post.
+  methods: [Campaigns, Creator results, Ad labelling]
+
+- slug: season
+  key: season
+  product: Season Signal
+  repo: marketing-calendar
+  dist: seasonsignal
+  package: seasonsignal
+  tag: null
+  family: Market
+  mode: coming_soon
+  public: false
+  question: What does the Norwegian marketing year look like, worked backwards?
+  one_liner: The Norwegian marketing year, worked backwards from the dates that matter into a campaign plan and an .ics file.
+  methods: [Calendar, Lead times, .ics export]
+
+- slug: adopt
+  key: adopt
+  product: Adopt Signal
+  repo: adoption-forecasting
+  dist: adoption-forecasting
+  package: adoptsignal
+  tag: v1.2.0
+  family: Market
+  mode: embedded
+  public: true
+  question: When will a new product be adopted?
+  one_liner: Bass diffusion planning from published analogies, history fitting and explicit warnings when a pre-peak forecast cannot identify the ceiling.
+  methods: [Bass diffusion, Scenarios, Fitting]
+
+- slug: worth
+  key: worth
+  product: Worth Signal
+  repo: customer-value-analytics
+  dist: customer-value-analytics
+  package: cva
+  tag: v1.2.0
+  family: Customer
+  mode: embedded
+  public: true
+  question: What are customers and relationships worth?
+  one_liner: Customer value, retention and marketing ROI, turned into guided decisions instead of another spreadsheet archaeology project.
+  methods: [RFM, CLV, Retention, ROI]
+
+- slug: segment
+  key: segment
+  product: Segment Signal
+  repo: customer-segmentation
+  dist: customer-segmentation
+  package: segmentsignal
+  tag: v1.2.0
+  family: Customer
+  mode: embedded
+  public: true
+  question: Do customers form stable, useful groups?
+  one_liner: Customer segmentation that compares methods, checks whether memberships survive resampling, and is allowed to say no reliable solution exists.
+  methods: [Clustering, Stability, Profiles]
+
+- slug: trace
+  key: trace
+  product: Trace Signal
+  repo: journey-path-analysis
+  dist: tracesignal
+  package: tracesignal
+  tag: v1.1.0
+  family: Customer
+  mode: embedded
+  public: true
+  question: How do logged customer journeys actually unfold?
+  one_liner: Descriptive journey evidence from event logs - transitions, path support, drop-off and positional roles, with a transparent Markov sensitivity check.
+  methods: [Transitions, Drop-off, Markov sensitivity]
+
+- slug: recommend
+  key: recommend
+  product: Recommend Signal
+  repo: recommender-evaluation
+  dist: recommendsignal
+  package: recommendsignal
+  tag: v1.1.0
+  family: Customer
+  mode: embedded
+  public: true
+  question: Which recommendation policy should be tested live?
+  one_liner: Offline evaluation of recommendation policies with temporal splits, covering accuracy, novelty, concentration and cold-start evidence.
+  methods: [Recall@K, NDCG@K, Cold start]
+
+- slug: choice
+  key: choice
+  product: Choice Signal
+  repo: conjoint-analysis
+  dist: conjoint-analysis
+  package: choicesignal
+  tag: v1.3.0
+  family: Research
+  mode: embedded
+  public: true
+  question: How do product attributes drive choice?
+  one_liner: Ratings-based conjoint analysis with respondent-level part-worths, design checks, attribute importance and preference scenarios.
+  methods: [Conjoint, Part-worths, Simulation]
+
+- slug: driver
+  key: driver
+  product: Driver Signal
+  repo: survey-driver-analysis
+  dist: driversignal
+  package: driversignal
+  tag: v1.1.0
+  family: Research
+  mode: embedded
+  public: true
+  question: Which measured experiences move with satisfaction?
+  one_liner: Survey driver analysis that separates relative importance from conditional direction and turns the ranking into a testable hypothesis.
+  methods: [Shapley / LMG, HC3, NPS]
+
+- slug: measure
+  key: measure
+  product: Measure Signal
+  repo: measurement-validation
+  dist: measuresignal
+  package: measuresignal
+  tag: v1.3.0
+  family: Research
+  mode: embedded
+  public: true
+  question: Does a multi-item score have a defensible structure?
+  one_liner: Measurement diagnostics with factor structure, reliability, a frozen holdout plan and an invariance gate before cross-group comparisons.
+  methods: [EFA, Alpha + omega, Invariance gate]
+
+- slug: text
+  key: text
+  product: Text Signal
+  repo: open-text-analysis
+  dist: textsignal
+  package: textsignal
+  tag: v1.2.0
+  family: Research
+  mode: embedded
+  public: true
+  question: What recurring patterns appear in open-ended responses?
+  one_liner: Open-text evidence with corpus audits, structured comparisons, stable NMF patterns, validated sentiment checks and a human codebook handoff.
+  methods: [Stable NMF, Keyness, Human coding]
+
+- slug: tag
+  key: tag
+  product: Tag Signal
+  repo: pricing-analysis
+  dist: tagsignal
+  package: tagsignal
+  tag: v1.2.0
+  family: Research
+  mode: embedded
+  public: true
+  question: What price range is supported, and how does profit move?
+  one_liner: Pricing evidence from price experiments, sales history or willingness to pay, fed into margin economics with the uncertainty intact.
+  methods: [Price tests, Elasticity, WTP curves]
+
+- slug: experiment
+  key: experiment
+  product: Experiment Signal
+  repo: experiment-analysis
+  dist: experimentsignal
+  package: experimentsignal
+  tag: v1.2.0
+  family: Decide
+  mode: embedded
+  public: true
+  question: Did the treatment cause a practically meaningful change?
+  one_liner: Decision support for randomized experiments with continuous or binary outcomes, design checks, robust intervals and practical thresholds.
+  methods: [Randomization, Robust intervals, Power]
+
+- slug: gate
+  key: gate
+  product: Gate Signal
+  repo: launch-decision-gate
+  dist: gatesignal
+  package: gatesignal
+  tag: v1.2.0
+  family: Decide
+  mode: embedded
+  public: true
+  question: Does a concept deserve the next investment?
+  one_liner: New-product gate support that separates criteria, evidence, constraints and economics, plus extension and reputation exposure.
+  methods: [Gate criteria, Scenario NPV, Risk response]
+
+- slug: alloc
+  key: alloc
+  product: Alloc Signal
+  repo: marketing-mix-allocation
+  dist: allocsignal
+  package: allocsignal
+  tag: v1.2.0
+  family: Decide
+  mode: embedded
+  public: true
+  question: Where should the next marketing budget go?
+  one_liner: Diminishing-return planning with real constraints, panel evidence and a digital-economics audit for challenging an optimized media plan.
+  methods: [Response curves, Optimization, Attribution audit]

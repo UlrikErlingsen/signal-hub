@@ -1,0 +1,17 @@
+# Generated from apps.yaml by scripts/gen_requirements.py. Do not edit by hand.
+# Editable installs from sibling clones, for working on apps and the Hub together.
+-e ../brand-tracking[ui]
+-e ../brand-positioning[ui]
+-e ../adoption-forecasting[ui]
+-e ../customer-value-analytics[ui]
+-e ../customer-segmentation[ui]
+-e ../journey-path-analysis[ui]
+-e ../recommender-evaluation[ui]
+-e ../conjoint-analysis[ui]
+-e ../survey-driver-analysis[ui]
+-e ../measurement-validation[ui]
+-e ../open-text-analysis[ui]
+-e ../pricing-analysis[ui]
+-e ../experiment-analysis[ui]
+-e ../launch-decision-gate[ui]
+-e ../marketing-mix-allocation[ui]
