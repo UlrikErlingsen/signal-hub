@@ -49,6 +49,8 @@ def planned_files(entry: dict) -> dict[Path, bytes]:
         files[repo / "assets" / f"{slug}-{suffix}"] = (ASSETS / "marks" / f"{slug}-{suffix}").read_bytes()
     config = (THEME / "config.toml").read_text(encoding="utf-8")
     config = config.replace('primaryColor = "#aa5d83"', f'primaryColor = "{FAMILIES[a["family"]]["600"]}"')
+    if entry.get("max_upload_mb"):  # keep each app's own upload cap
+        config = config.replace("headless = true\n", f"headless = true\nmaxUploadSize = {entry['max_upload_mb']}\n")
     files[repo / ".streamlit" / "config.toml"] = config.encode("utf-8")
     return files
 

@@ -38,6 +38,7 @@ class App:
     public: bool = True
     demo_url: str | None = None
     methods: tuple[str, ...] = field(default_factory=tuple)
+    max_upload_mb: int | None = None
 
     @property
     def prefix(self) -> str:
@@ -76,6 +77,9 @@ def _validate(raw: dict, index: int) -> App:
         raise RegistryError(f"{where}: a link app needs an https demo_url")
     if not raw["product"].endswith(" Signal"):
         raise RegistryError(f"{where}: product must be '<Prefix> Signal'")
+    cap = raw.get("max_upload_mb")
+    if cap is not None and (not isinstance(cap, int) or not 1 <= cap <= 1000):
+        raise RegistryError(f"{where}: max_upload_mb must be a whole number of MB between 1 and 1000")
     data = dict(raw)
     data["methods"] = tuple(raw.get("methods") or ())
     data["public"] = bool(raw.get("public", True))
