@@ -120,7 +120,7 @@ the wrapper). ruff (line length 120) + pytest.
 
 ## 10. Phases
 
-- P0 contract + P1 skeleton + P2 rollout: done locally on 2026-10-01 for all 15 analytics apps (see STATUS).
+- P0 contract + P1 skeleton + P2 rollout: done on 2026-10-02 for all 15 analytics apps (see STATUS).
 - P3: the four Norwegian apps join at their v1.
 - P4: Docker/GHCR (workflow ready), VPS hand-off, tag-bump PR automation.
 - Parallel: the WorthSignal consolidation (section 7).

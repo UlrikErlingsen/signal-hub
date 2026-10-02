@@ -2,7 +2,7 @@
 
 All notable changes to Signal Hub are documented here.
 
-## [0.1.0] - 2026-10-01
+## [0.1.0] - 2026-10-02
 
 ### Added
 
@@ -15,5 +15,7 @@ All notable changes to Signal Hub are documented here.
   regenerated for the 2026-10-01 rename with `signal-theme/tools/render_brand_images.py`.
 - App contract (`docs/APP_CONTRACT.md`), brand rollout recipe (`docs/BRAND_ROLLOUT.md`), status page, GitHub profile
   and repository settings kit (`docs/github/`).
+- Figtree embedded as `signal-theme/signal_font.py` (OFL), so no page requests Google Fonts; per-family
+  contrast-ordered chart colorway; per-app upload caps (`max_upload_mb`) kept by the theme sync.
 - Tests (registry, front page, per-app smoke tests), CI with an all-apps dependency-resolution job, Dockerfile and a
   GHCR image workflow, launchers for Windows and macOS.

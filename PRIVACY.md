@@ -4,8 +4,8 @@ Signal Hub does not implement telemetry, advertising, user accounts, tracking pi
 calls or outbound data uploads. Files you upload are processed in the running Streamlit session's memory by the tool
 you opened. They are never written to the server's disk, and they disappear when the session ends.
 
-The pages load the Figtree typeface from Google Fonts, so your browser contacts `fonts.googleapis.com` and
-`fonts.gstatic.com`. No uploaded data is part of that request.
+The Figtree typeface is embedded in the app (SIL Open Font License), so pages make no request to Google Fonts
+or any other third-party host.
 
 If someone deploys the Hub, that operator controls infrastructure logs, retention, backups and network access and
 must document those practices separately. Do not upload personal or confidential data to a deployment you do not

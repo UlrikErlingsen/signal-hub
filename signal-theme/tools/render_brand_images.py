@@ -5,8 +5,7 @@ match the rest of the kit:
 
     python signal-theme/tools/render_brand_images.py influence --chips "Campaigns" "Creator results" "Ad labelling"
 
-Needs Microsoft Edge or Google Chrome installed (set SIGNAL_BROWSER to override the path) and network access for
-the Figtree web font.
+Needs Microsoft Edge or Google Chrome installed (set SIGNAL_BROWSER to override the path) (the font is embedded).
 """
 
 from __future__ import annotations
@@ -25,7 +24,10 @@ sys.path.insert(0, str(HERE.parent))
 from signal_theme import CORE, app  # noqa: E402
 
 ASSETS = HERE.parent / "assets"
-FONT = "https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap"
+from signal_font import FIGTREE_WOFF2_B64  # noqa: E402
+
+FONT_CSS = ("@font-face{font-family:Figtree;font-weight:400 800;"
+            f"src:url(data:font/woff2;base64,{FIGTREE_WOFF2_B64}) format('woff2')}")
 DOTS = ("brand", "market", "customer", "research", "decide")
 
 
@@ -51,7 +53,7 @@ def _mark(a: dict) -> str:
 def banner_html(a: dict, chips: list[str]) -> str:
     f = a["fam"]
     pills = "".join(f"<span>{c.upper()}</span>" for c in chips)
-    return f"""<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="{FONT}"><style>
+    return f"""<!doctype html><html><head><meta charset="utf-8"><style>{FONT_CSS}
 html,body{{margin:0;width:2400px;height:720px;background:transparent;overflow:hidden}}
 .b{{position:relative;width:2400px;height:720px;border-radius:48px;overflow:hidden;background:{CORE['sidebar']};
 font-family:Figtree,sans-serif}}
@@ -76,7 +78,7 @@ def social_html(a: dict) -> str:
     from signal_theme import FAMILIES
 
     dots = "".join(f'<i style="background:{FAMILIES[k]["600"]}"></i>' for k in DOTS)
-    return f"""<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="{FONT}"><style>
+    return f"""<!doctype html><html><head><meta charset="utf-8"><style>{FONT_CSS}
 html,body{{margin:0;width:1280px;height:640px;overflow:hidden}}
 .s{{position:relative;width:1280px;height:640px;overflow:hidden;background:{CORE['bg']};font-family:Figtree,sans-serif}}
 .c1{{position:absolute;left:790px;top:40px;width:180px;height:180px;border-radius:50%;background:{f['300']}}}

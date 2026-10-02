@@ -3,6 +3,7 @@
 signal-theme/ in this repo is the master copy. Each app keeps a synced copy so it still runs on its own:
 
     <repo>/src/<package>/ui/signal_theme.py          the theme module (CSS, lockups, chart palette)
+    <repo>/src/<package>/ui/signal_font.py           the embedded Figtree typeface (OFL), used by the theme CSS
     <repo>/src/<package>/ui/assets/marks/<slug>-*     the app's own mark (SVG + 32/64 px PNG)
     <repo>/assets/<slug>-{banner,social}.png          README banner and GitHub social preview
     <repo>/assets/<slug>-mark{.svg,-32,-64,-512.png}   marks for README and favicons
@@ -33,6 +34,12 @@ sys.path.insert(0, str(THEME))
 from signal_theme import FAMILIES, app  # noqa: E402
 
 
+def _same(current: bytes, wanted: bytes) -> bool:
+    """Equal, ignoring CRLF vs LF (git normalises text files; Windows checkouts may use CRLF)."""
+    crlf, lf = bytes([13, 10]), bytes([10])
+    return current == wanted or current.replace(crlf, lf) == wanted.replace(crlf, lf)
+
+
 def planned_files(entry: dict) -> dict[Path, bytes]:
     """Map destination path -> wanted bytes for one app."""
     a = app(entry["key"])
@@ -41,6 +48,8 @@ def planned_files(entry: dict) -> dict[Path, bytes]:
     ui = repo / "src" / entry["package"] / "ui"
     files: dict[Path, bytes] = {}
     files[ui / "signal_theme.py"] = (HEADER + (THEME / "signal_theme.py").read_text(encoding="utf-8")).encode("utf-8")
+    font_header = HEADER.replace("signal_theme.py", "signal_font.py")
+    files[ui / "signal_font.py"] = (font_header + (THEME / "signal_font.py").read_text(encoding="utf-8")).encode("utf-8")
     for suffix in ("mark.svg", "mark-32.png", "mark-64.png"):
         files[ui / "assets" / "marks" / f"{slug}-{suffix}"] = (ASSETS / "marks" / f"{slug}-{suffix}").read_bytes()
     for kind, folder in (("banner", "banners"), ("social", "social")):
@@ -71,7 +80,7 @@ def main() -> int:
             print(f"skip {entry['slug']}: no clone at {repo}")
             continue
         for path, data in planned_files(entry).items():
-            if path.exists() and path.read_bytes() == data:
+            if path.exists() and _same(path.read_bytes(), data):
                 continue
             stale += 1
             if args.check:

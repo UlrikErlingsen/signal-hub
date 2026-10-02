@@ -24,18 +24,19 @@ Last updated 2026-10-02. Source of truth for modes and tags: [`apps.yaml`](../ap
 | Decide | Gate Signal | launch-decision-gate | embedded | v1.2.0 | |
 | Decide | Alloc Signal | marketing-mix-allocation | embedded | v1.2.0 | Dockerfile `USER` line fixed |
 
-All tags above exist locally and are **not pushed yet**. The Hub's pinned installs (`requirements-apps.txt`) only work
-once each app's `main` and tag are pushed to GitHub.
+All tags above are pushed to GitHub; the Hub's pinned installs (`requirements-apps.txt`) resolve from them.
 
 ## Open follow-ups
 
-- Push every app repo with its tag, then this repo (see the hand-off in the session summary).
-- GitHub settings that are not in git: descriptions/topics (`docs/github/set_repo_metadata.ps1`), social previews
-  (by hand), profile README (`docs/github/profile-README.md`), optional rename of `Signal-Hub` to `signal-hub`.
-- Some apps open on a welcome page with demo buttons instead of a preloaded demo (Adopt, Choice, Segment, Worth,
-  Driver, Experiment, Alloc, Position, Tag). Decide whether the Hub should preload them.
-- README screenshots in Prospect and Season Signal still show the old look; Influence and Listen were re-shot.
-- Research colorway: the first two hues (Research 600, Brand 600) are close; a family-specific order in
-  `colorway()` would help, but apps index into it today, so change it together with those charts.
-- Figtree loads from Google Fonts in every app; self-hosting the font would remove the only third-party request.
-- Phase 4: deploy to the VPS (`deploy/README.md`) and the tag-bump automation.
+- GitHub settings outside git: descriptions/topics (`docs/github/set_repo_metadata.ps1`, needs the GitHub CLI),
+  social previews (by hand), profile README (`docs/github/profile-README.md`).
+- Phase 4: deploy to the VPS (`deploy/README.md`, done through the VPS chat) and the tag-bump automation.
+- WorthSignal consolidation with Freddo's signal-core (CLAUDE.md §7): needs a file list approved before touching
+  signal-crm.
+
+## Done 2026-10-02
+
+- Every embedded app opens with its fictional demo preloaded (some still need one click to run the analysis).
+- Figtree is embedded (`signal-theme/signal_font.py`); no app or Hub page requests Google Fonts.
+- The colorway uses a per-family contrast order (Research charts no longer pair ochre with terracotta).
+- Prospect and Season Signal README screenshots re-taken in the new theme.
