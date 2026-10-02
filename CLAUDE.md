@@ -20,13 +20,17 @@ by family, and every released tool running inside it.
 ## 2. The apps
 
 Source of truth: each repo's `pyproject.toml` and README; local clones sit next to this folder. The Hub's list is
-[`apps.yaml`](apps.yaml) (never list apps anywhere else).
+[`apps.yaml`](apps.yaml) (never list apps anywhere else). **(2026-10-03)** `scripts/sync_suite.py` writes every
+derived list from it (theme APPS block, pins, README tables here and in every app, topics, repo metadata, the suite
+size in prose); `scripts/scaffold_app.py` gives a new app repo the standard files. Recipe:
+[docs/ADDING_AN_APP.md](docs/ADDING_AN_APP.md).
 
 **(2026-10-01)** The sidebar uses the five design families from Claude Design "Unified Signal apps design":
 Brand (Track, Position) · Market (Prospect, Listen, Influence, Season, Adopt) · Customer (Worth, Segment, Trace,
-Recommend) · Research (Choice, Driver, Measure, Text, Tag) · Decide (Experiment, Gate, Alloc).
+Recommend) · Research (Choice, Driver, Measure, Text, Tag) · Decide (Experiment, Gate, Shift, Alloc).
 
-- All 19 apps are embedded. The four Norwegian-market apps (`b2b-prospecting` Prospect Signal,
+- All 20 apps are embedded. **(2026-10-03)** Shift Signal (`cannibalization-analysis`, menu and product
+  cannibalization) joined at v1.0.0. The four Norwegian-market apps (`b2b-prospecting` Prospect Signal,
   `media-listening` Listen Signal, `influencer-campaigns` **Influence Signal** (renamed from CreatorSignal on
   2026-10-01), `marketing-calendar` Season Signal) went public and joined at v1.0.0 on 2026-10-02. In the Hub they
   run in Hub mode (APP_CONTRACT section 8): no registry/RSS calls, no disk writes, demo data in session memory.

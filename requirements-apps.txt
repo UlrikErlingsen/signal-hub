@@ -17,4 +17,5 @@ textsignal[ui] @ https://github.com/UlrikErlingsen/open-text-analysis/archive/re
 tagsignal[ui] @ https://github.com/UlrikErlingsen/pricing-analysis/archive/refs/tags/v1.2.0.zip
 experimentsignal[ui] @ https://github.com/UlrikErlingsen/experiment-analysis/archive/refs/tags/v1.2.0.zip
 gatesignal[ui] @ https://github.com/UlrikErlingsen/launch-decision-gate/archive/refs/tags/v1.2.0.zip
+shiftsignal[ui] @ https://github.com/UlrikErlingsen/cannibalization-analysis/archive/refs/tags/v1.0.0.zip
 allocsignal[ui] @ https://github.com/UlrikErlingsen/marketing-mix-allocation/archive/refs/tags/v1.2.0.zip

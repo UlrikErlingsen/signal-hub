@@ -1,9 +1,14 @@
-"""Render an app's README banner (2400x720) and social preview (1280x640) with a headless Chromium browser.
+"""Render an app's mark PNGs (32/64/512), README banner (2400x720) and social preview (1280x640) with a headless
+Chromium browser.
 
 The original PNGs came from Claude Design. Use this script when an app is added or renamed, so the new images
-match the rest of the kit:
+match the rest of the kit. Draw the mark first (assets/marks/<slug>-mark.svg, the suite style: family 600 circle,
+#f9f4ed glyph, family 300 accent dot) and run scripts/sync_suite.py so signal_theme.APPS knows the app:
 
+    python signal-theme/tools/render_brand_images.py shift
     python signal-theme/tools/render_brand_images.py influence --chips "Campaigns" "Creator results" "Ad labelling"
+
+The banner chips default to the app's `methods:` in apps.yaml.
 
 Needs Microsoft Edge or Google Chrome installed (set SIGNAL_BROWSER to override the path) (the font is embedded).
 """
@@ -27,7 +32,7 @@ ASSETS = HERE.parent / "assets"
 from signal_font import FIGTREE_WOFF2_B64  # noqa: E402
 
 FONT_CSS = ("@font-face{font-family:Figtree;font-weight:400 800;"
-            f"src:url(data:font/woff2;base64,{FIGTREE_WOFF2_B64}) format('woff2')}")
+            f"src:url(data:font/woff2;base64,{FIGTREE_WOFF2_B64}) format('woff2')" "}")
 DOTS = ("brand", "market", "customer", "research", "decide")
 
 
@@ -96,6 +101,19 @@ p{{position:absolute;left:72px;top:360px;margin:0;width:700px;color:#474238;font
 </div></body></html>"""
 
 
+def mark_html(a: dict, size: int) -> str:
+    return (f'<!doctype html><html><head><meta charset="utf-8"><style>html,body{{margin:0;width:{size}px;'
+            f'height:{size}px;background:transparent;overflow:hidden}}img{{display:block;width:{size}px;'
+            f'height:{size}px}}</style></head><body><img src="{_mark(a)}"></body></html>')
+
+
+def _methods(key: str) -> list[str]:
+    import yaml
+
+    entries = yaml.safe_load((HERE.parents[1] / "apps.yaml").read_text(encoding="utf-8"))
+    return next((list(e.get("methods") or []) for e in entries if e["key"] == key), [])
+
+
 def _shoot(html: str, out: Path, width: int, height: int, transparent: bool) -> None:
     with tempfile.TemporaryDirectory() as tmp:
         page = Path(tmp) / "page.html"
@@ -111,9 +129,13 @@ def _shoot(html: str, out: Path, width: int, height: int, transparent: bool) -> 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("key", help="signal_theme.APPS key, e.g. influence")
-    parser.add_argument("--chips", nargs="+", default=[], help="2-3 method chips for the banner")
+    parser.add_argument("--chips", nargs="+", default=None, help="2-3 method chips (default: apps.yaml methods)")
     args = parser.parse_args()
     a = app(args.key)
+    if args.chips is None:
+        args.chips = _methods(args.key)[:3]
+    for size in (32, 64, 512):
+        _shoot(mark_html(a, size), ASSETS / "marks" / f"{a['slug']}-mark-{size}.png", size, size, True)
     _shoot(banner_html(a, args.chips), ASSETS / "banners" / f"{a['slug']}-banner.png", 2400, 720, True)
     _shoot(social_html(a), ASSETS / "social" / f"{a['slug']}-social.png", 1280, 640, False)
 

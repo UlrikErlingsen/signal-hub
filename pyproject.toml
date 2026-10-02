@@ -38,7 +38,7 @@ markers = ["apps: needs every embedded app installed (the CI apps job)"]
 target-version = "py310"
 line-length = 120
 src = ["hub", "tests", "scripts"]
-extend-exclude = ["signal-theme/tools"]
+extend-exclude = ["signal-theme/tools", "signal-theme/app-template"]
 
 [tool.ruff.lint]
 select = ["E4", "E7", "E9", "F"]

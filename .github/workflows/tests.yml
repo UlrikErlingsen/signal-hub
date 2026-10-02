@@ -19,8 +19,8 @@ jobs:
           cache: pip
       - name: Install the Hub without apps
         run: pip install -e ".[test]"
-      - name: Requirement files match apps.yaml
-        run: python scripts/gen_requirements.py --check
+      - name: Every generated list matches apps.yaml
+        run: python scripts/sync_suite.py --check --hub-only
       - run: python -m ruff check .
       - run: python -m pytest -q -m "not apps"
 

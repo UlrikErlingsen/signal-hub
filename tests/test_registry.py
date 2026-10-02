@@ -25,7 +25,7 @@ def _entry(**overrides) -> dict:
 
 def test_registry_loads_every_app_once() -> None:
     apps = load()
-    assert len(apps) == 19
+    assert len(apps) >= 20
     assert len({a.slug for a in apps}) == len(apps)
     assert {a.family for a in apps} == set(registry.FAMILIES)
 
@@ -80,6 +80,32 @@ def test_bad_entries_fail_loudly(tmp_path: Path, overrides: dict, message: str) 
 def test_duplicate_slugs_are_rejected(tmp_path: Path) -> None:
     with pytest.raises(RegistryError, match="duplicate slug"):
         load(_write(tmp_path, [_entry(), _entry(repo="other", package="other")]))
+
+
+def test_every_generated_list_matches_the_registry() -> None:
+    """README tables, theme APPS block, topics, repo metadata, requirement pins: run scripts/sync_suite.py."""
+    from scripts import sync_suite
+
+    stale = [str(path.relative_to(ROOT)) for path, data in sync_suite.plan(hub_only=True).items()
+             if not (path.exists() and sync_suite._same(path.read_bytes(), data))]
+    assert not stale, f"{stale} out of date; run python scripts/sync_suite.py"
+
+
+def test_count_word_spells_the_suite_size() -> None:
+    from hub.registry import count_word
+
+    assert [count_word(n) for n in (9, 19, 20, 21, 34)] == ["Nine", "Nineteen", "Twenty", "Twenty-one", "Thirty-four"]
+
+
+def test_every_app_has_a_mark_and_brand_images() -> None:
+    from hub.theme import THEME_DIR
+
+    assets = THEME_DIR / "assets"
+    for app in load():
+        slug = f"{app.key}signal"
+        for path in (assets / "marks" / f"{slug}-mark.svg", assets / "marks" / f"{slug}-mark-64.png",
+                     assets / "banners" / f"{slug}-banner.png", assets / "social" / f"{slug}-social.png"):
+            assert path.exists(), f"{path.name} missing; see docs/ADDING_AN_APP.md"
 
 
 def test_requirement_files_are_generated_from_the_registry() -> None:

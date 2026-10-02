@@ -4,6 +4,31 @@ All notable changes to Signal Hub are documented here.
 
 ## [Unreleased]
 
+### Added
+
+- Shift Signal (`cannibalization-analysis`, Decide family) at v1.0.0: twenty apps.
+- `scripts/sync_suite.py`: one command that writes every list derived from `apps.yaml`:
+  - the `signal_theme.APPS` block and the requirement pins;
+  - the README app tables and the suite size in prose;
+  - topics and repo metadata;
+  - every app README's suite table and theme copy.
+
+  `--check` for CI.
+- `scripts/scaffold_app.py` and `signal-theme/app-template/`: the standard repo files for a new app, filled in
+  from its registry entry.
+- `docs/ADDING_AN_APP.md`.
+- `apps.yaml` gains `tagline` and `topics`.
+- `render_brand_images.py` also renders the mark PNGs and takes banner chips from `methods`.
+
+### Fixed
+
+- `render_brand_images.py` failed to start (an f-string syntax error).
+
+### Removed
+
+- `signal-theme/hub/README.md` and `signal-theme/profile/README.md`, stale copies from the design-kit import. The live
+  versions are `README.md` and `docs/github/profile-README.md`.
+
 ### Changed
 
 - Front page and sidebar follow Claude Design "Signal Hub Home v2": every tool as a card grouped by family, with a

@@ -15,6 +15,9 @@ MODES = ("embedded", "link", "coming_soon")
 GITHUB = "https://github.com/UlrikErlingsen"
 _SLUG = re.compile(r"^[a-z][a-z0-9]*$")
 _TAG = re.compile(r"^v\d+\.\d+\.\d+$")
+_WORDS = ("Zero One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen "
+          "Seventeen Eighteen Nineteen").split()
+_TENS = {2: "Twenty", 3: "Thirty", 4: "Forty", 5: "Fifty", 6: "Sixty", 7: "Seventy", 8: "Eighty", 9: "Ninety"}
 _REQUIRED = ("slug", "key", "product", "repo", "dist", "package", "family", "mode", "question", "one_liner")
 
 
@@ -39,11 +42,18 @@ class App:
     demo_url: str | None = None
     methods: tuple[str, ...] = field(default_factory=tuple)
     max_upload_mb: int | None = None
+    tagline: str | None = None
+    topics: tuple[str, ...] = field(default_factory=tuple)
 
     @property
     def prefix(self) -> str:
         """'Track' for 'Track Signal'."""
         return self.product.removesuffix(" Signal")
+
+    @property
+    def slogan(self) -> str:
+        """Banner and theme tagline; falls back to the question."""
+        return self.tagline or self.question
 
     @property
     def repo_url(self) -> str | None:
@@ -82,6 +92,7 @@ def _validate(raw: dict, index: int) -> App:
         raise RegistryError(f"{where}: max_upload_mb must be a whole number of MB between 1 and 1000")
     data = dict(raw)
     data["methods"] = tuple(raw.get("methods") or ())
+    data["topics"] = tuple(raw.get("topics") or ())
     data["public"] = bool(raw.get("public", True))
     return App(**data)
 
@@ -104,3 +115,13 @@ def load(path: Path = REGISTRY) -> list[App]:
 
 def by_family(apps: list[App]) -> dict[str, list[App]]:
     return {family: [a for a in apps if a.family == family] for family in FAMILIES}
+
+
+def count_word(n: int) -> str:
+    """'Twenty' for 20: the suite size in prose (front page, READMEs)."""
+    if 0 <= n < 20:
+        return _WORDS[n]
+    if 20 <= n < 100:
+        tens, ones = divmod(n, 10)
+        return _TENS[tens] + (f"-{_WORDS[ones].lower()}" if ones else "")
+    return str(n)

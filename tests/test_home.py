@@ -2,7 +2,7 @@ from pathlib import Path
 
 from streamlit.testing.v1 import AppTest
 
-from hub.registry import FAMILIES, load
+from hub.registry import FAMILIES, count_word, load
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -37,8 +37,8 @@ def test_front_page_renders_every_section() -> None:
     app.run()
     assert not app.exception, [e.value for e in app.exception]
     text = _markdown(app)
-    for expected in ("Nineteen decisions", "How every app works", "Customers in practice", "How it's built",
-                     "freddo.ulrikerlingsen.com", "AGPL-3.0-or-later", "fictional"):
+    for expected in (f"{count_word(len(load()))} decisions", "How every app works", "Customers in practice",
+                     "How it's built", "freddo.ulrikerlingsen.com", "AGPL-3.0-or-later", "fictional"):
         assert expected in text, expected
     assert text.count('class="hub-tool ') == len(load())  # one card per app, all linked
     assert "Creator Signal" not in text
@@ -80,7 +80,7 @@ def test_hub_sidebar_lists_every_app_by_family() -> None:
     assert not app.exception, [e.value for e in app.exception]
     assert [e.label for e in app.sidebar.expander] == list(FAMILIES)
     sidebar = " ".join(str(m.value) for m in app.sidebar.markdown)
-    assert "19 marketing evidence tools" in sidebar
+    assert f"{len(load())} marketing evidence tools" in sidebar
     assert "freddo.ulrikerlingsen.com" in sidebar
     app.sidebar.text_input(key="hub:find").set_value("conjoint").run()
     assert [e.label for e in app.sidebar.expander] == ["Research"]

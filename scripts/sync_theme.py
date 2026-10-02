@@ -14,6 +14,8 @@ Usage (from the signal-hub folder; app clones sit next to it):
     python scripts/sync_theme.py              # all apps
     python scripts/sync_theme.py track worth  # selected slugs
     python scripts/sync_theme.py --check      # exit 1 if any app copy is out of date
+
+scripts/sync_suite.py runs this together with every other generated list; prefer that.
 """
 
 from __future__ import annotations
@@ -31,7 +33,7 @@ CLONES = HUB.parent
 HEADER = "# Synced from signal-hub/signal-theme/signal_theme.py. Edit it there, then run scripts/sync_theme.py.\n"
 
 sys.path.insert(0, str(THEME))
-from signal_theme import FAMILIES, app  # noqa: E402
+from signal_theme import FAMILIES  # noqa: E402
 
 
 def _same(current: bytes, wanted: bytes) -> bool:
@@ -40,14 +42,15 @@ def _same(current: bytes, wanted: bytes) -> bool:
     return current == wanted or current.replace(crlf, lf) == wanted.replace(crlf, lf)
 
 
-def planned_files(entry: dict) -> dict[Path, bytes]:
-    """Map destination path -> wanted bytes for one app."""
-    a = app(entry["key"])
-    slug = a["slug"]
+def planned_files(entry: dict, theme_text: str | None = None) -> dict[Path, bytes]:
+    """Map destination path -> wanted bytes for one app. theme_text: the master module to copy (default: on disk)."""
+    slug = f"{entry['key']}signal"
+    family = entry["family"].lower()
     repo = CLONES / entry["repo"]
     ui = repo / "src" / entry["package"] / "ui"
     files: dict[Path, bytes] = {}
-    files[ui / "signal_theme.py"] = (HEADER + (THEME / "signal_theme.py").read_text(encoding="utf-8")).encode("utf-8")
+    theme_text = theme_text if theme_text is not None else (THEME / "signal_theme.py").read_text(encoding="utf-8")
+    files[ui / "signal_theme.py"] = (HEADER + theme_text).encode("utf-8")
     font_header = HEADER.replace("signal_theme.py", "signal_font.py")
     files[ui / "signal_font.py"] = (font_header + (THEME / "signal_font.py").read_text(encoding="utf-8")).encode("utf-8")
     for suffix in ("mark.svg", "mark-32.png", "mark-64.png"):
@@ -57,7 +60,7 @@ def planned_files(entry: dict) -> dict[Path, bytes]:
     for suffix in ("mark.svg", "mark-32.png", "mark-64.png", "mark-512.png"):
         files[repo / "assets" / f"{slug}-{suffix}"] = (ASSETS / "marks" / f"{slug}-{suffix}").read_bytes()
     config = (THEME / "config.toml").read_text(encoding="utf-8")
-    config = config.replace('primaryColor = "#aa5d83"', f'primaryColor = "{FAMILIES[a["family"]]["600"]}"')
+    config = config.replace('primaryColor = "#aa5d83"', f'primaryColor = "{FAMILIES[family]["600"]}"')
     if entry.get("max_upload_mb"):  # keep each app's own upload cap
         config = config.replace("headless = true\n", f"headless = true\nmaxUploadSize = {entry['max_upload_mb']}\n")
     files[repo / ".streamlit" / "config.toml"] = config.encode("utf-8")

@@ -1,6 +1,6 @@
 # Status
 
-Last updated 2026-10-02. Source of truth for modes and tags: [`apps.yaml`](../apps.yaml).
+Last updated 2026-10-03. Source of truth for modes and tags: [`apps.yaml`](../apps.yaml).
 
 | Family | App | Repo | Mode | Hub pins | Notes |
 |---|---|---|---|---|---|
@@ -22,6 +22,7 @@ Last updated 2026-10-02. Source of truth for modes and tags: [`apps.yaml`](../ap
 | Research | Tag Signal | pricing-analysis | embedded | v1.2.0 | |
 | Decide | Experiment Signal | experiment-analysis | embedded | v1.2.0 | |
 | Decide | Gate Signal | launch-decision-gate | embedded | v1.2.0 | |
+| Decide | Shift Signal | cannibalization-analysis | embedded | v1.0.0 | joined 2026-10-03; scaffolded with `scripts/scaffold_app.py` |
 | Decide | Alloc Signal | marketing-mix-allocation | embedded | v1.2.0 | Dockerfile `USER` line fixed |
 
 All tags above are pushed to GitHub; the Hub's pinned installs (`requirements-apps.txt`) resolve from them.

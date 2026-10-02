@@ -1,21 +1,22 @@
-# gh repo edit UlrikErlingsen/<repo> --add-topic <t> …  (add 2–3 method topics per repo)
+# gh repo edit UlrikErlingsen/<repo> --add-topic <t> …  (generated from apps.yaml by scripts/sync_suite.py)
 signal-hub: signal-suite, streamlit, local-first
-brand-tracking: signal-suite, signal-brand, streamlit, local-first
-brand-positioning: signal-suite, signal-brand, streamlit, local-first
-b2b-prospecting: signal-suite, signal-market, streamlit, local-first
-media-listening: signal-suite, signal-market, streamlit, local-first
-influencer-campaigns: signal-suite, signal-market, streamlit, local-first
-marketing-calendar: signal-suite, signal-market, streamlit, local-first
-adoption-forecasting: signal-suite, signal-market, streamlit, local-first
-customer-value-analytics: signal-suite, signal-customer, streamlit, local-first
-customer-segmentation: signal-suite, signal-customer, streamlit, local-first
-journey-path-analysis: signal-suite, signal-customer, streamlit, local-first
-recommender-evaluation: signal-suite, signal-customer, streamlit, local-first
-conjoint-analysis: signal-suite, signal-research, streamlit, local-first
-survey-driver-analysis: signal-suite, signal-research, streamlit, local-first
-measurement-validation: signal-suite, signal-research, streamlit, local-first
-open-text-analysis: signal-suite, signal-research, streamlit, local-first
-pricing-analysis: signal-suite, signal-research, streamlit, local-first
-experiment-analysis: signal-suite, signal-decide, streamlit, local-first
-launch-decision-gate: signal-suite, signal-decide, streamlit, local-first
-marketing-mix-allocation: signal-suite, signal-decide, streamlit, local-first
+brand-tracking: signal-suite, signal-brand, streamlit, local-first, brand-tracking, survey-analysis
+brand-positioning: signal-suite, signal-brand, streamlit, local-first, perceptual-mapping, pca
+b2b-prospecting: signal-suite, signal-market, streamlit, local-first, b2b, brreg
+media-listening: signal-suite, signal-market, streamlit, local-first, media-monitoring, sentiment-analysis
+influencer-campaigns: signal-suite, signal-market, streamlit, local-first, influencer-marketing, norway
+marketing-calendar: signal-suite, signal-market, streamlit, local-first, marketing-calendar, norway
+adoption-forecasting: signal-suite, signal-market, streamlit, local-first, bass-diffusion, forecasting
+customer-value-analytics: signal-suite, signal-customer, streamlit, local-first, clv, rfm
+customer-segmentation: signal-suite, signal-customer, streamlit, local-first, segmentation, clustering
+journey-path-analysis: signal-suite, signal-customer, streamlit, local-first, customer-journey, markov-chain
+recommender-evaluation: signal-suite, signal-customer, streamlit, local-first, recommender-systems, offline-evaluation
+conjoint-analysis: signal-suite, signal-research, streamlit, local-first, conjoint-analysis, market-research
+survey-driver-analysis: signal-suite, signal-research, streamlit, local-first, driver-analysis, survey-analysis
+measurement-validation: signal-suite, signal-research, streamlit, local-first, psychometrics, factor-analysis
+open-text-analysis: signal-suite, signal-research, streamlit, local-first, text-analysis, nmf
+pricing-analysis: signal-suite, signal-research, streamlit, local-first, pricing, price-elasticity
+experiment-analysis: signal-suite, signal-decide, streamlit, local-first, ab-testing, experimentation
+launch-decision-gate: signal-suite, signal-decide, streamlit, local-first, new-product-development, stage-gate
+cannibalization-analysis: signal-suite, signal-decide, streamlit, local-first, cannibalization, difference-in-differences
+marketing-mix-allocation: signal-suite, signal-decide, streamlit, local-first, marketing-mix, budget-optimization

@@ -18,4 +18,5 @@
 -e ../pricing-analysis[ui]
 -e ../experiment-analysis[ui]
 -e ../launch-decision-gate[ui]
+-e ../cannibalization-analysis[ui]
 -e ../marketing-mix-allocation[ui]

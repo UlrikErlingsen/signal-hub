@@ -1,5 +1,7 @@
 <!--
-Signal README template. Replace every {{…}}. Keep the section order: readers learn it once and find
+Signal README template. scripts/scaffold_app.py fills the header fields from apps.yaml; replace every
+remaining {{…}} and delete this comment. scripts/sync_suite.py fills the suite table under "Where this fits".
+Keep the section order: readers learn it once and find
 the same thing in every repo. Delete a section only if the app truly has nothing for it.
 Move existing README text into the matching section; don't drop it.
 
@@ -10,7 +12,7 @@ Move existing README text into the matching section; don't drop it.
 {{FAMILY}}      Brand | Market | Customer | Research | Decide
 {{fam_hex}}     family 600 without "#": brand b2622d · market 728157 · customer aa5d83 · research a06f1f · decide 4f80a2
 {{question}}    the one question the app answers, as a question
-Repo topics:    signal-suite, signal-{{family}}, streamlit, local-first, + 2–3 method topics
+Repo topics:    generated from apps.yaml `topics:` (docs/github/set_repo_metadata.ps1)
 Social preview: Settings → Social preview → upload assets/{{slug}}-social.png
 
 Section map (old README → this template)
@@ -161,29 +163,8 @@ python -m build
 
 {{One or two sentences: which app comes before or after this one, and why.}}
 
-| App | Asks |
-|---|---|
-| [Track Signal](https://github.com/UlrikErlingsen/brand-tracking) | Is the brand moving, or is the tracker just noisy? |
-| [Position Signal](https://github.com/UlrikErlingsen/brand-positioning) | Where do brands sit relative to competitors? |
-| [Prospect Signal](https://github.com/UlrikErlingsen/b2b-prospecting) | Which Norwegian companies fit the ideal customer? |
-| [Listen Signal](https://github.com/UlrikErlingsen/media-listening) | What are Norwegian media and social channels saying? |
-| [Influence Signal](https://github.com/UlrikErlingsen/influencer-campaigns) | Which creators delivered, and was every post labelled? |
-| [Season Signal](https://github.com/UlrikErlingsen/marketing-calendar) | What does the Norwegian marketing year look like, worked backwards? |
-| [Adopt Signal](https://github.com/UlrikErlingsen/adoption-forecasting) | When will a new product be adopted? |
-| [Worth Signal](https://github.com/UlrikErlingsen/customer-value-analytics) | What are customers and relationships worth? |
-| [Segment Signal](https://github.com/UlrikErlingsen/customer-segmentation) | Do customers form stable, useful groups? |
-| [Trace Signal](https://github.com/UlrikErlingsen/journey-path-analysis) | How do logged customer journeys actually unfold? |
-| [Recommend Signal](https://github.com/UlrikErlingsen/recommender-evaluation) | Which recommendation policy should be tested live? |
-| [Choice Signal](https://github.com/UlrikErlingsen/conjoint-analysis) | How do product attributes drive choice? |
-| [Driver Signal](https://github.com/UlrikErlingsen/survey-driver-analysis) | Which measured experiences move with satisfaction? |
-| [Measure Signal](https://github.com/UlrikErlingsen/measurement-validation) | Does a multi-item score have a defensible structure? |
-| [Text Signal](https://github.com/UlrikErlingsen/open-text-analysis) | What recurring patterns appear in open-ended responses? |
-| [Tag Signal](https://github.com/UlrikErlingsen/pricing-analysis) | What price range is supported, and how does profit move? |
-| [Experiment Signal](https://github.com/UlrikErlingsen/experiment-analysis) | Did the treatment cause a practically meaningful change? |
-| [Gate Signal](https://github.com/UlrikErlingsen/launch-decision-gate) | Does a concept deserve the next investment? |
-| [Alloc Signal](https://github.com/UlrikErlingsen/marketing-mix-allocation) | Where should the next marketing budget go? |
-
-The maintained public suite is listed at [ulrikerlingsen.com](https://ulrikerlingsen.com) and in [Signal Hub](https://github.com/UlrikErlingsen/signal-hub).
+<!-- signal-suite:start (generated from signal-hub/apps.yaml by scripts/sync_readme_suite.py) -->
+<!-- signal-suite:end -->
 
 ## References
 

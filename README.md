@@ -8,14 +8,16 @@
   <a href="LICENSE"><img alt="License: AGPL-3.0-or-later" src="https://img.shields.io/badge/License-AGPL--3.0--or--later-645c50"></a>
 </p>
 
-<p align="center"><strong>Nineteen small apps. Each answers one marketing question, shows its method, and runs on your own machine.</strong></p>
+<p align="center"><strong>Twenty small apps. Each answers one marketing question, shows its method, and runs on your own machine.</strong></p>
 
-**Signal Hub** is one Streamlit app that puts all nineteen Signal tools behind a single link: a front page, a sidebar menu by
+**Signal Hub** is one Streamlit app that puts all twenty Signal tools behind a single link: a front page, a sidebar menu by
 family, and every released tool running inside it with its fictional demo already loaded. It assembles apps that
 already exist. Each tool stays its own repository and Python package, and the Hub pins released versions.
 
 Everything runs locally with open-source Python packages. There is no account, telemetry, external AI call, remote
 database, or built-in persistence. Uploads stay in your session's memory.
+
+<!-- signal-apps:start (generated from apps.yaml by scripts/sync_suite.py) -->
 
 ## <img src="https://img.shields.io/badge/-%20-b2622d?style=flat-square" height="14" alt=""> Brand
 
@@ -59,7 +61,10 @@ database, or built-in persistence. Uploads stay in your session's memory.
 |---|---|---|---|
 | <img src="signal-theme/assets/marks/experimentsignal-mark-64.png" width="28" alt=""> | **Experiment Signal** | Did the treatment cause a practically meaningful change? | [experiment-analysis](https://github.com/UlrikErlingsen/experiment-analysis) |
 | <img src="signal-theme/assets/marks/gatesignal-mark-64.png" width="28" alt=""> | **Gate Signal** | Does a concept deserve the next investment? | [launch-decision-gate](https://github.com/UlrikErlingsen/launch-decision-gate) |
+| <img src="signal-theme/assets/marks/shiftsignal-mark-64.png" width="28" alt=""> | **Shift Signal** | Does a launch grow the portfolio, or move existing demand around? | [cannibalization-analysis](https://github.com/UlrikErlingsen/cannibalization-analysis) |
 | <img src="signal-theme/assets/marks/allocsignal-mark-64.png" width="28" alt=""> | **Alloc Signal** | Where should the next marketing budget go? | [marketing-mix-allocation](https://github.com/UlrikErlingsen/marketing-mix-allocation) |
+
+<!-- signal-apps:end -->
 
 ## How the apps fit together
 
@@ -97,19 +102,22 @@ Then open http://127.0.0.1:8501. The container runs as a non-root user. See [dep
 
 ## How it works
 
-- [`apps.yaml`](apps.yaml) is the only list of apps. The sidebar, the front page, the requirement files and the
-  smoke tests come from it.
+- [`apps.yaml`](apps.yaml) is the only list of apps. The sidebar, the front page and the smoke tests read it;
+  `python scripts/sync_suite.py` writes everything else from it: the app tables above, the requirement pins, the
+  theme's app list, topics, repo descriptions, and the suite table in every app's README.
+- Adding an app takes one registry entry and a few commands: [docs/ADDING_AN_APP.md](docs/ADDING_AN_APP.md).
+  `python scripts/scaffold_app.py <slug>` gives a new repo the standard files.
 - An app joins the Hub by exposing `<package>.ui.render()`: the [app contract](docs/APP_CONTRACT.md). Inside the Hub
   apps run in Hub mode (`SIGNAL_HUB=1`): session memory only, fictional demo data, no network calls or disk writes.
 - To update an app: release it (version, CHANGELOG, tag `vX.Y.Z`), change its `tag:` in `apps.yaml`, run
-  `python scripts/gen_requirements.py`, test, redeploy. Unfinished work in an app never reaches the Hub.
+  `python scripts/sync_suite.py`, test, redeploy. Unfinished work in an app never reaches the Hub.
 - Current state per app: [docs/STATUS.md](docs/STATUS.md).
 
 ## Shared design
 
 `signal-theme/` is the master copy of the suite's look: `signal_theme.py` (theme, lockups, chart palette), marks,
-README banners, social previews, the README template and repo topics. `python scripts/sync_theme.py` copies it into
-every app clone; `--check` reports stale copies. Rollout recipe: [docs/BRAND_ROLLOUT.md](docs/BRAND_ROLLOUT.md).
+README banners, social previews, the README template, the app template (`signal-theme/app-template/`) and repo topics.
+`python scripts/sync_suite.py` copies it into every app clone; `--check` reports stale copies. Rollout recipe: [docs/BRAND_ROLLOUT.md](docs/BRAND_ROLLOUT.md).
 
 ## Development
 

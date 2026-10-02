@@ -11,7 +11,7 @@ from html import escape
 import streamlit as st
 
 from hub import theme
-from hub.registry import App, FAMILIES, by_family
+from hub.registry import App, FAMILIES, by_family, count_word
 from hub.sidebar import FREDDO_DEMO, HUB_REPO, matches
 
 sig = theme.sig
@@ -23,14 +23,6 @@ STEPS = [
     ("customer", "Estimate with intervals", "A named method, with the uncertainty and any warnings next to the number."),
     ("decide", "Export the evidence", "Download results as Excel or JSON, ready to show and to question."),
 ]
-_WORDS = {10: "Ten", 11: "Eleven", 12: "Twelve", 13: "Thirteen", 14: "Fourteen", 15: "Fifteen", 16: "Sixteen",
-          17: "Seventeen", 18: "Eighteen", 19: "Nineteen", 20: "Twenty", 21: "Twenty-one", 22: "Twenty-two"}
-
-
-def _number(n: int) -> str:
-    return _WORDS.get(n, str(n))
-
-
 def _href(app: App) -> str:
     """Relative link to the app's page inside the Hub (url_path = slug)."""
     return f"./{app.slug}"
@@ -40,7 +32,7 @@ def _header(apps: list[App]) -> None:
     st.markdown(
         f"""<section class="hub-head"><div>
 <div class="hub-eyebrow">Signal Hub</div>
-<h1>{_number(len(apps))} decisions, <span class="hl">one question each.</span></h1>
+<h1>{count_word(len(apps))} decisions, <span class="hl">one question each.</span></h1>
 <p>Open-source, local-first marketing tools that show their uncertainty instead of hiding it. Each one names its
 method, says what it cannot tell you, and runs on fictional demo data the moment you open it.</p></div>
 <div class="hub-row"><a class="hub-btn" href="{HUB_REPO}" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
