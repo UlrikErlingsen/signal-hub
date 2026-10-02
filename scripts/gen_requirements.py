@@ -1,7 +1,8 @@
 """Generate the app requirement files from apps.yaml.
 
     requirements-apps.txt   embedded apps pinned to their release tags (used by Docker, CI and run_app)
-    requirements-local.txt  the same apps as editable installs from sibling clones (development)
+    local-apps.txt          the same apps as editable installs from sibling clones (development). Deliberately not
+                            named requirements*.txt: Dependabot scans those and cannot see the sibling folders.
 
 Usage: python scripts/gen_requirements.py [--check]
 """
@@ -25,7 +26,7 @@ def render() -> dict[Path, str]:
     pinned = HEADER + "".join(f"{a.requirement}\n" for a in apps)
     local = HEADER + "# Editable installs from sibling clones, for working on apps and the Hub together.\n"
     local += "".join(f"-e ../{a.repo}[ui]\n" for a in apps)
-    return {HUB / "requirements-apps.txt": pinned, HUB / "requirements-local.txt": local}
+    return {HUB / "requirements-apps.txt": pinned, HUB / "local-apps.txt": local}
 
 
 def main() -> int:

@@ -42,7 +42,7 @@ run_app.bat/.command, pyproject, ruff, pytest).
 
 Apps install as packages pinned to release tags. **(2026-10-01)** Pins use GitHub tag archives so no git client is
 needed: `tracksignal[ui] @ https://github.com/UlrikErlingsen/brand-tracking/archive/refs/tags/v1.1.0.zip`.
-`scripts/gen_requirements.py` writes `requirements-apps.txt` (pins) and `requirements-local.txt` (editable sibling
+`scripts/gen_requirements.py` writes `requirements-apps.txt` (pins) and `local-apps.txt` (editable sibling
 clones) from `apps.yaml`.
 
 ### 3.2 The app ↔ Hub contract

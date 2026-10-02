@@ -114,7 +114,7 @@ every app clone; `--check` reports stale copies. Rollout recipe: [docs/BRAND_ROL
 ## Development
 
 ```bash
-python -m pip install -r requirements-local.txt -e ".[test]"   # apps as editable sibling clones
+python -m pip install -r local-apps.txt -e ".[test]"   # apps as editable sibling clones
 python -m pytest
 python -m ruff check .
 ```
