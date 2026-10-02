@@ -86,8 +86,13 @@ def test_render_runs_without_set_page_config_and_keys_are_namespaced() -> None:
 def test_hub_mode_writes_nothing_and_makes_no_network_calls(tmp_path, monkeypatch: pytest.MonkeyPatch) -> None:
     import socket
 
-    def no_network(*args, **kwargs):
-        raise AssertionError("network call in Hub mode")
+    real_connect = socket.socket.connect
+
+    def no_network(sock, address, *args, **kwargs):
+        # asyncio's event loop on Windows builds its self-pipe from a loopback socket pair; that is not network I/O.
+        if isinstance(address, tuple) and address[0] in {"127.0.0.1", "::1"}:
+            return real_connect(sock, address, *args, **kwargs)
+        raise AssertionError(f"network call in Hub mode: {address!r}")
 
     monkeypatch.setenv("SIGNAL_HUB", "1")
     for name in ("HOME", "USERPROFILE", "APPDATA", "LOCALAPPDATA", "XDG_DATA_HOME", "XDG_CACHE_HOME"):
