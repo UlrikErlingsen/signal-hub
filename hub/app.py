@@ -6,6 +6,9 @@ import os
 
 # Keep Arrow serialization stable on macOS. This must be set before Streamlit imports Arrow.
 os.environ.setdefault("ARROW_DEFAULT_MEMORY_POOL", "system")
+# Tells embedded apps they run inside the shared Hub: session-memory storage only, fictional demo data, no network
+# calls or disk writes (docs/APP_CONTRACT.md, section 8).
+os.environ["SIGNAL_HUB"] = "1"
 
 from pathlib import Path
 import sys

@@ -100,3 +100,17 @@ explicit namespaced key, and always key the page-selector radio (`key=k("page")`
 
 Bump the version (minor for this rollout), add a CHANGELOG entry, update `CITATION.cff`, commit, and create an
 annotated tag `vX.Y.Z`. Then change the app's `tag:` in signal-hub `apps.yaml` and set `mode: embedded`.
+
+## 8. Hub mode (`SIGNAL_HUB=1`)
+
+The Hub sets the environment variable `SIGNAL_HUB=1` before importing apps. When it is set, an app must:
+
+- keep all state in the Streamlit session (in-memory SQLite/DuckDB, `st.session_state`), never write files or
+  databases on the server, and never read a user's earlier workspace;
+- make no outbound network requests (registry APIs, RSS, web pages); use its bundled fictional demo or uploads;
+- say so in the UI where a feature is disabled ("Live collection is off in Signal Hub; run the app locally").
+
+Standalone behaviour is unchanged. Test both modes (monkeypatch the variable).
+
+Apps with their own multipage navigation (`st.navigation` + `pages/`) keep it for the standalone `app.py`; `render()`
+draws the same page functions behind a namespaced sidebar radio instead, because the Hub owns `st.navigation`.
