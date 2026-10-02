@@ -29,7 +29,7 @@ All tags above are pushed to GitHub; the Hub's pinned installs (`requirements-ap
 ## Open follow-ups
 
 - Optional: pin repos on the GitHub profile.
-- Phase 4: deploy to the VPS (`deploy/README.md`, done through the VPS chat) and the tag-bump automation.
+- Phase 4: deploy (`deploy/README.md`) and the tag-bump automation.
 - WorthSignal consolidation with Freddo's signal-core (CLAUDE.md §7): needs a file list approved before touching
   signal-crm.
 

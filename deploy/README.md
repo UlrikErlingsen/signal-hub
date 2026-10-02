@@ -1,6 +1,6 @@
 # Deploying Signal Hub
 
-Hand-off for the VPS. DNS, reverse proxy, TLS and firewall are set up on the VPS side, not in this repo.
+Hand-off for hosting. DNS, reverse proxy, TLS and firewall are set up on the server, not in this repo.
 
 | | |
 |---|---|

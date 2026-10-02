@@ -109,8 +109,8 @@ the Freddo agent; **never edit `signal-crm` without listing every file you would
 ## 8. Deployment
 
 `python:3.12-slim`, pins from `requirements-apps.txt`, non-root user, port 8501, `/_stcore/health` health check.
-Target: Ulrik's VPS at a subdomain such as `signal.ulrikerlingsen.com`. DNS, reverse proxy, TLS and firewall are
-handled in the VPS chat, not here. Images build on GitHub Actions to GHCR (`.github/workflows/image.yml`). Hand-off:
+Target: a subdomain such as `signal.ulrikerlingsen.com`. Hosting, DNS, reverse proxy, TLS and firewall are handled
+outside this repo. Images build on GitHub Actions to GHCR (`.github/workflows/image.yml`). Hand-off:
 [deploy/README.md](deploy/README.md).
 
 ## 9. Tests
@@ -123,13 +123,13 @@ the wrapper). ruff (line length 120) + pytest.
 
 - P0 contract + P1 skeleton + P2 rollout: done on 2026-10-02 for all 15 analytics apps (see STATUS).
 - P3: the four Norwegian apps joined at v1.0.0 on 2026-10-02 (public, embedded, Hub mode).
-- P4: Docker/GHCR (workflow ready), VPS hand-off, tag-bump PR automation.
+- P4: Docker/GHCR (workflow ready), hosting hand-off, tag-bump PR automation.
 - Parallel: the WorthSignal consolidation (section 7).
 
 ## 11. Working rules
 
 - Ulrik commits and pushes from GitHub Desktop. Commit locally in small, logical steps and say what to push.
 - Changes in an app repo happen in that repo, as a release. Never copy app code into the Hub.
-- Ask before touching `signal-crm` (Freddo). Infra goes through the VPS chat.
+- Ask before touching `signal-crm` (Freddo). Hosting and infrastructure are handled outside this repo.
 - Keep [docs/STATUS.md](docs/STATUS.md) current.
 - When unsure about a fact (an API, a product name, a version), check the repo. Never guess.
