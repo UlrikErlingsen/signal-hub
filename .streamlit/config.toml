@@ -17,5 +17,7 @@ fileWatcherType = "none"
 gatherUsageStats = false
 
 [client]
+# Visitors never see tracebacks; the Hub shows its own error card (details with SIGNALHUB_DEBUG=1).
+showErrorDetails = "none"
 toolbarMode = "viewer"
 showSidebarNavigation = true

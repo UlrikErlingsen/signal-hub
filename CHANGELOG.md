@@ -22,6 +22,8 @@ All notable changes to Signal Hub are documented here.
 
 ### Fixed
 
+- The Docker image lacked `signal-theme/signal_font.py`, so the Hub failed to start (`ModuleNotFoundError`). `tests/test_image.py` now rebuilds the image's file set from the Dockerfile and imports the Hub from it.
+- Visitors no longer see Streamlit tracebacks (`showErrorDetails = "none"`); the Hub's own error cards stay.
 - `render_brand_images.py` failed to start (an f-string syntax error).
 
 ### Removed
