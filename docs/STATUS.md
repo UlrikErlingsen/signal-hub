@@ -28,8 +28,8 @@ All tags above are pushed to GitHub; the Hub's pinned installs (`requirements-ap
 
 ## Open follow-ups
 
-- GitHub settings outside git: descriptions/topics (`docs/github/set_repo_metadata.ps1`, needs the GitHub CLI),
-  social previews (by hand), profile README (`docs/github/profile-README.md`).
+- Social previews for the four Norwegian repos: GitHub only allows them on public repos, so upload
+  `assets/<slug>-social.png` when each goes public at v1. Optional: pin repos on the profile.
 - Phase 4: deploy to the VPS (`deploy/README.md`, done through the VPS chat) and the tag-bump automation.
 - WorthSignal consolidation with Freddo's signal-core (CLAUDE.md §7): needs a file list approved before touching
   signal-crm.
@@ -40,3 +40,6 @@ All tags above are pushed to GitHub; the Hub's pinned installs (`requirements-ap
 - Figtree is embedded (`signal-theme/signal_font.py`); no app or Hub page requests Google Fonts.
 - The colorway uses a per-family contrast order (Research charts no longer pair ochre with terracotta).
 - Prospect and Season Signal README screenshots re-taken in the new theme.
+- GitHub: repo renamed to `signal-hub` and made public; descriptions (spaced names), Signal Hub homepage and
+  suite topics on all 20 repos; social previews on the 16 public repos; profile README in
+  `UlrikErlingsen/UlrikErlingsen`.
