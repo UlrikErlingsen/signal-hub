@@ -56,8 +56,9 @@ or `coming_soon`.
 
 ### 3.3 What the Hub contains
 
-- `hub/app.py`: `st.set_page_config`, theme, `st.navigation` from `apps.yaml`.
-- `hub/home.py`: the front page (section 4), design "Signal Hub Page".
+- `hub/app.py`: `st.set_page_config`, theme, `st.navigation` from `apps.yaml` (hidden; see `hub/sidebar.py`).
+- `hub/home.py`: the front page (section 4). **(2026-10-02)** Design "Signal Hub Home v2" replaces "Signal Hub Page".
+- `hub/sidebar.py`: the menu: lockup, tool search, one collapsible group per family with app marks (`st.page_link`).
 - `hub/registry.py`: loads and validates `apps.yaml`, fails loudly on a bad entry.
 - `hub/pages.py`: one wrapper per app: slim header (product, version, source, standalone demo), then
   `<pkg>.ui.render()` inside try/except. A crashing app shows an error card and never takes the Hub down.
@@ -80,7 +81,8 @@ Every app preloads a deterministic fictional demo. Where cheap, align new demos 
 ## 4. Front page
 
 1. Promise of the suite plus a short paragraph: open-source, local-first tools that show uncertainty.
-2. Cards from `apps.yaml` (featured three, question picker, full suite by family): name, question, Open, Source.
+2. **(2026-10-02)** Every tool as a card from `apps.yaml`, grouped by family, with a search box and family filter;
+   then the four steps every app shares.
 3. "Customers in practice": Prospect Signal finds the market → CSV export → Freddo CRM manages the customers.
 4. "How it's built": each tool its own repo and package, released versions pinned, no telemetry, no accounts;
    built with AI-assisted development (Ulrik specifies, reviews and ships); no real-user or traction claims.

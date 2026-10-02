@@ -19,24 +19,23 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from hub import home, theme  # noqa: E402
+from hub import home, sidebar, theme  # noqa: E402
 from hub.pages import page_function  # noqa: E402
-from hub.registry import by_family, load  # noqa: E402
+from hub.registry import load  # noqa: E402
 
 st.set_page_config(**theme.page_config())
 APPS = load()
 
-st.logo(str(theme.HUB_ICON), size="large", link="https://github.com/UlrikErlingsen/signal-hub")
-sections: dict[str, list] = {
-    "": [st.Page(lambda: home.render(APPS), title="Home", icon=":material/home:", url_path="home", default=True)]
+home_page = st.Page(lambda: home.render(APPS), title="Home", icon=":material/home:", url_path="home", default=True)
+app_pages = {
+    app.slug: st.Page(page_function(app), title=app.product + ("" if app.mode == "embedded" else " · soon"),
+                      url_path=app.slug)
+    for app in APPS
 }
-for family, members in by_family(APPS).items():
-    sections[family] = [
-        st.Page(page_function(app), title=app.product + ("" if app.mode == "embedded" else " · soon"),
-                url_path=app.slug)
-        for app in members
-    ]
-current = st.navigation(sections, expanded=True)
+# Hidden: the menu is the Hub's own sidebar (hub/sidebar.py), so entries can carry marks and fold by family.
+current = st.navigation([home_page, *app_pages.values()], position="hidden")
 
 theme.apply()
+sidebar.render(APPS, home_page, app_pages, current=current.url_path if current.url_path in app_pages else None)
 current.run()
+sidebar.footer()

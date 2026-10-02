@@ -1,4 +1,4 @@
-"""One wrapper per app: slim Hub header, then the app's own ui.render(). A crashing app never takes the Hub down."""
+"""One wrapper per app: slim Hub header (back link, version, source), then the app's own ui.render(). A crashing app never takes the Hub down."""
 
 from __future__ import annotations
 
@@ -28,15 +28,18 @@ def load_ui(app: App):
 
 
 def _header(app: App, version: str | None) -> None:
-    parts = [f"<b>{escape(app.product)}</b>"]
+    parts = ['<a class="back" href="./" target="_self">← All tools</a>', f"<b>{escape(app.product)}</b>"]
     if version:
         parts.append(f"v{escape(version)}")
     parts.append("All demo data is fictional")
+    color = theme.fam(app.family)["700"]
     if app.repo_url:
-        parts.append(f'<a href="{app.repo_url}" target="_blank" rel="noopener noreferrer">Source on GitHub ↗</a>')
+        parts.append(f'<a href="{app.repo_url}" target="_blank" rel="noopener noreferrer" style="color:{color}">'
+                     "Source on GitHub ↗</a>")
     if app.demo_url:
-        parts.append(f'<a href="{escape(app.demo_url)}" target="_blank" rel="noopener noreferrer">Standalone demo ↗</a>')
-    dot = '<span class="hub-dot" style="background:var(--sg-a600);width:6px;height:6px"></span>'
+        parts.append(f'<a href="{escape(app.demo_url)}" target="_blank" rel="noopener noreferrer" style="color:{color}">'
+                     "Standalone demo ↗</a>")
+    dot = f'<span class="hub-dot" style="background:{theme.fam(app.family)["600"]};width:6px;height:6px"></span>'
     st.markdown(f'<div class="hub-apphead">{dot.join(parts)}</div>', unsafe_allow_html=True)
 
 

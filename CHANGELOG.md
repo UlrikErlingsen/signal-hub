@@ -2,6 +2,17 @@
 
 All notable changes to Signal Hub are documented here.
 
+## [Unreleased]
+
+### Changed
+
+- Front page and sidebar follow Claude Design "Signal Hub Home v2": every tool as a card grouped by family, with a
+  search box and family filter; the four shared steps as one band; "Customers in practice" and "How it's built"
+  side by side. The featured trio, question picker and separate suite list are gone (the cards cover them).
+- The sidebar is the Hub's own (`hub/sidebar.py`; `st.navigation` runs hidden): Signal Hub lockup, tool search, one
+  collapsible group per family with each app's mark, and GitHub and Freddo CRM links after the open app's controls.
+- App pages open with a "← All tools" link in the header. The sidebar starts collapsed on phones.
+
 ## [0.1.0] - 2026-10-02
 
 ### Added
