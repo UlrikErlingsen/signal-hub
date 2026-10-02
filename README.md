@@ -10,7 +10,7 @@
 
 <p align="center"><strong>Nineteen small apps. Each answers one marketing question, shows its method, and runs on your own machine.</strong></p>
 
-**Signal Hub** is one Streamlit app that puts the Signal tools behind a single link: a front page, a sidebar menu by
+**Signal Hub** is one Streamlit app that puts all nineteen Signal tools behind a single link: a front page, a sidebar menu by
 family, and every released tool running inside it with its fictional demo already loaded. It assembles apps that
 already exist. Each tool stays its own repository and Python package, and the Hub pins released versions.
 
@@ -28,10 +28,10 @@ database, or built-in persistence. Uploads stay in your session's memory.
 
 | | App | Question | Repo |
 |---|---|---|---|
-| <img src="signal-theme/assets/marks/prospectsignal-mark-64.png" width="28" alt=""> | **Prospect Signal** | Which Norwegian companies fit your ideal customer, and which first? | coming with v1 |
-| <img src="signal-theme/assets/marks/listensignal-mark-64.png" width="28" alt=""> | **Listen Signal** | Who is talking about the brand in Norwegian media, and in what tone? | coming with v1 |
-| <img src="signal-theme/assets/marks/influencesignal-mark-64.png" width="28" alt=""> | **Influence Signal** | Which creators delivered, and was every post labelled properly? | coming with v1 |
-| <img src="signal-theme/assets/marks/seasonsignal-mark-64.png" width="28" alt=""> | **Season Signal** | What does the Norwegian marketing year look like, worked backwards? | coming with v1 |
+| <img src="signal-theme/assets/marks/prospectsignal-mark-64.png" width="28" alt=""> | **Prospect Signal** | Which Norwegian companies fit your ideal customer, and which first? | [b2b-prospecting](https://github.com/UlrikErlingsen/b2b-prospecting) |
+| <img src="signal-theme/assets/marks/listensignal-mark-64.png" width="28" alt=""> | **Listen Signal** | Who is talking about the brand in Norwegian media, and in what tone? | [media-listening](https://github.com/UlrikErlingsen/media-listening) |
+| <img src="signal-theme/assets/marks/influencesignal-mark-64.png" width="28" alt=""> | **Influence Signal** | Which creators delivered, and was every post labelled properly? | [influencer-campaigns](https://github.com/UlrikErlingsen/influencer-campaigns) |
+| <img src="signal-theme/assets/marks/seasonsignal-mark-64.png" width="28" alt=""> | **Season Signal** | What does the Norwegian marketing year look like, worked backwards? | [marketing-calendar](https://github.com/UlrikErlingsen/marketing-calendar) |
 | <img src="signal-theme/assets/marks/adoptsignal-mark-64.png" width="28" alt=""> | **Adopt Signal** | When will a new product be adopted? | [adoption-forecasting](https://github.com/UlrikErlingsen/adoption-forecasting) |
 
 ## <img src="https://img.shields.io/badge/-%20-aa5d83?style=flat-square" height="14" alt=""> Customer
@@ -99,8 +99,8 @@ Then open http://127.0.0.1:8501. The container runs as a non-root user. See [dep
 
 - [`apps.yaml`](apps.yaml) is the only list of apps. The sidebar, the front page, the requirement files and the
   smoke tests come from it.
-- An app joins the Hub by exposing `<package>.ui.render()`: the [app contract](docs/APP_CONTRACT.md). Apps not yet
-  released for the Hub show as "coming with v1" (the four Norwegian-market tools are private until then).
+- An app joins the Hub by exposing `<package>.ui.render()`: the [app contract](docs/APP_CONTRACT.md). Inside the Hub
+  apps run in Hub mode (`SIGNAL_HUB=1`): session memory only, fictional demo data, no network calls or disk writes.
 - To update an app: release it (version, CHANGELOG, tag `vX.Y.Z`), change its `tag:` in `apps.yaml`, run
   `python scripts/gen_requirements.py`, test, redeploy. Unfinished work in an app never reaches the Hub.
 - Current state per app: [docs/STATUS.md](docs/STATUS.md).

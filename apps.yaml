@@ -53,10 +53,10 @@
   repo: b2b-prospecting
   dist: prospectsignal
   package: prospectsignal
-  tag: null
+  tag: v1.0.0
   family: Market
-  mode: coming_soon
-  public: false
+  mode: embedded
+  public: true
   max_upload_mb: 50
   question: Which Norwegian companies fit your ideal customer, and which first?
   one_liner: Ideal-customer filters, market size and shortlists built from open Brønnøysund company data, run locally.
@@ -68,10 +68,10 @@
   repo: media-listening
   dist: listensignal
   package: listensignal
-  tag: null
+  tag: v1.0.0
   family: Market
-  mode: coming_soon
-  public: false
+  mode: embedded
+  public: true
   max_upload_mb: 10
   question: Who is talking about the brand in Norwegian media, and in what tone?
   one_liner: Mentions, share of voice and Norwegian-language sentiment from media and social sources, run locally.
@@ -83,10 +83,10 @@
   repo: influencer-campaigns
   dist: influencesignal
   package: influencesignal
-  tag: null
+  tag: v1.0.0
   family: Market
-  mode: coming_soon
-  public: false
+  mode: embedded
+  public: true
   max_upload_mb: 20
   question: Which creators delivered, and was every post labelled properly?
   one_liner: A local-first influencer campaign manager for the Norwegian market, with an advertising-label checklist on every post.
@@ -98,10 +98,10 @@
   repo: marketing-calendar
   dist: seasonsignal
   package: seasonsignal
-  tag: null
+  tag: v1.0.0
   family: Market
-  mode: coming_soon
-  public: false
+  mode: embedded
+  public: true
   question: What does the Norwegian marketing year look like, worked backwards?
   one_liner: The Norwegian marketing year, worked backwards from the dates that matter into a campaign plan and an .ics file.
   methods: [Calendar, Lead times, .ics export]

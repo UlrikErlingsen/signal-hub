@@ -10,12 +10,16 @@ def _home() -> None:
 
 
 def _placeholder() -> None:
+    from dataclasses import replace
+
     from hub import theme
     from hub.pages import page_function
     from hub.registry import load
 
     theme.apply()
-    page_function(next(a for a in load() if a.slug == "prospect"))()
+    # Every app is embedded today; check the coming-soon card with a private, not-yet-released copy of one entry.
+    app = replace(next(a for a in load() if a.slug == "prospect"), mode="coming_soon", tag=None, public=False)
+    page_function(app)()
 
 
 def _markdown(app: AppTest) -> str:

@@ -104,7 +104,7 @@ def _hub_panel(apps: list[App]) -> None:
         f'<section class="hub-panel"><div class="hub-eyebrow">The Signal Hub app</div>'
         f"<h2>{_number(live)} tools live. <span class='hl'>One app.</span></h2>"
         f'<p class="lead">Signal Hub brings the suite into a single Streamlit app with the same look and the same '
-        f"evidence rules throughout. The Norwegian-market tools join as they reach v1.</p>"
+        f"evidence rules throughout, including the four Norwegian-market tools.</p>"
         f'<div class="hub-points">{html}</div></section>',
         unsafe_allow_html=True,
     )

@@ -6,10 +6,10 @@ Last updated 2026-10-02. Source of truth for modes and tags: [`apps.yaml`](../ap
 |---|---|---|---|---|---|
 | Brand | Track Signal | brand-tracking | embedded | v1.1.0 | reference implementation of the contract |
 | Brand | Position Signal | brand-positioning | embedded | v1.2.0 | `positionsignal.plotting` moved to `positionsignal.ui.plotting` |
-| Market | Prospect Signal | b2b-prospecting | coming_soon | – | private until v1; brand refresh done |
-| Market | Listen Signal | media-listening | coming_soon | – | private until v1; brand refresh done |
-| Market | Influence Signal | influencer-campaigns | coming_soon | – | private until v1; renamed from CreatorSignal 2026-10-01; brand refresh done |
-| Market | Season Signal | marketing-calendar | coming_soon | – | private until v1; plotly widened to `<8`; brand refresh done |
+| Market | Prospect Signal | b2b-prospecting | embedded | v1.0.0 | Hub mode: offline demo, in-memory DuckDB, no Brreg calls |
+| Market | Listen Signal | media-listening | embedded | v1.0.0 | Hub mode: demo corpus only, no feed collection, lexicon sentiment |
+| Market | Influence Signal | influencer-campaigns | embedded | v1.0.0 | renamed from CreatorSignal; Hub mode: in-memory SQLite workspace |
+| Market | Season Signal | marketing-calendar | embedded | v1.0.0 | Hub mode: campaigns in session memory |
 | Market | Adopt Signal | adoption-forecasting | embedded | v1.2.0 | demos generated in code |
 | Customer | Worth Signal | customer-value-analytics | embedded | v1.2.0 | consolidation with Freddo's signal-core not started (CLAUDE.md §7) |
 | Customer | Segment Signal | customer-segmentation | embedded | v1.2.0 | demos generated in code |
@@ -28,8 +28,7 @@ All tags above are pushed to GitHub; the Hub's pinned installs (`requirements-ap
 
 ## Open follow-ups
 
-- Social previews for the four Norwegian repos: GitHub only allows them on public repos, so upload
-  `assets/<slug>-social.png` when each goes public at v1. Optional: pin repos on the profile.
+- Optional: pin repos on the GitHub profile.
 - Phase 4: deploy to the VPS (`deploy/README.md`, done through the VPS chat) and the tag-bump automation.
 - WorthSignal consolidation with Freddo's signal-core (CLAUDE.md §7): needs a file list approved before touching
   signal-crm.
@@ -41,5 +40,5 @@ All tags above are pushed to GitHub; the Hub's pinned installs (`requirements-ap
 - The colorway uses a per-family contrast order (Research charts no longer pair ochre with terracotta).
 - Prospect and Season Signal README screenshots re-taken in the new theme.
 - GitHub: repo renamed to `signal-hub` and made public; descriptions (spaced names), Signal Hub homepage and
-  suite topics on all 20 repos; social previews on the 16 public repos; profile README in
+  suite topics on all 20 repos; social previews on all 20 repos (the four Norwegian ones went public on 2026-10-02); profile README in
   `UlrikErlingsen/UlrikErlingsen`.

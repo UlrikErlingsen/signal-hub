@@ -1,6 +1,10 @@
 # Generated from apps.yaml by scripts/gen_requirements.py. Do not edit by hand.
 tracksignal[ui] @ https://github.com/UlrikErlingsen/brand-tracking/archive/refs/tags/v1.1.0.zip
 positionsignal[ui] @ https://github.com/UlrikErlingsen/brand-positioning/archive/refs/tags/v1.2.0.zip
+prospectsignal[ui] @ https://github.com/UlrikErlingsen/b2b-prospecting/archive/refs/tags/v1.0.0.zip
+listensignal[ui] @ https://github.com/UlrikErlingsen/media-listening/archive/refs/tags/v1.0.0.zip
+influencesignal[ui] @ https://github.com/UlrikErlingsen/influencer-campaigns/archive/refs/tags/v1.0.0.zip
+seasonsignal[ui] @ https://github.com/UlrikErlingsen/marketing-calendar/archive/refs/tags/v1.0.0.zip
 adoption-forecasting[ui] @ https://github.com/UlrikErlingsen/adoption-forecasting/archive/refs/tags/v1.2.0.zip
 customer-value-analytics[ui] @ https://github.com/UlrikErlingsen/customer-value-analytics/archive/refs/tags/v1.2.0.zip
 customer-segmentation[ui] @ https://github.com/UlrikErlingsen/customer-segmentation/archive/refs/tags/v1.2.0.zip

@@ -26,9 +26,10 @@ Source of truth: each repo's `pyproject.toml` and README; local clones sit next 
 Brand (Track, Position) · Market (Prospect, Listen, Influence, Season, Adopt) · Customer (Worth, Segment, Trace,
 Recommend) · Research (Choice, Driver, Measure, Text, Tag) · Decide (Experiment, Gate, Alloc).
 
-- 15 analytics apps are embedded. The four Norwegian-market apps (`b2b-prospecting` Prospect Signal,
+- All 19 apps are embedded. The four Norwegian-market apps (`b2b-prospecting` Prospect Signal,
   `media-listening` Listen Signal, `influencer-campaigns` **Influence Signal** (renamed from CreatorSignal on
-  2026-10-01), `marketing-calendar` Season Signal) are private until v1 and show as `coming_soon`.
+  2026-10-01), `marketing-calendar` Season Signal) went public and joined at v1.0.0 on 2026-10-02. In the Hub they
+  run in Hub mode (APP_CONTRACT section 8): no registry/RSS calls, no disk writes, demo data in session memory.
 - Freddo CRM (`signal-crm`, Frappe-based, demo https://freddo.ulrikerlingsen.com) is a separate product, not in the
   Hub. The front page links to it.
 
@@ -121,7 +122,7 @@ the wrapper). ruff (line length 120) + pytest.
 ## 10. Phases
 
 - P0 contract + P1 skeleton + P2 rollout: done on 2026-10-02 for all 15 analytics apps (see STATUS).
-- P3: the four Norwegian apps join at their v1.
+- P3: the four Norwegian apps joined at v1.0.0 on 2026-10-02 (public, embedded, Hub mode).
 - P4: Docker/GHCR (workflow ready), VPS hand-off, tag-bump PR automation.
 - Parallel: the WorthSignal consolidation (section 7).
 

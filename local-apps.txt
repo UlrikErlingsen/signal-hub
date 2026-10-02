@@ -2,6 +2,10 @@
 # Editable installs from sibling clones, for working on apps and the Hub together.
 -e ../brand-tracking[ui]
 -e ../brand-positioning[ui]
+-e ../b2b-prospecting[ui]
+-e ../media-listening[ui]
+-e ../influencer-campaigns[ui]
+-e ../marketing-calendar[ui]
 -e ../adoption-forecasting[ui]
 -e ../customer-value-analytics[ui]
 -e ../customer-segmentation[ui]
