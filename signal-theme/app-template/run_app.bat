@@ -21,6 +21,7 @@ if errorlevel 1 (
   )
 )
 if "%{{ENV}}_PORT%"=="" set {{ENV}}_PORT={{port}}
+if "%{{ENV}}_MAX_UPLOAD_MB%"=="" set {{ENV}}_MAX_UPLOAD_MB={{max_upload_mb}}
 echo Starting {{Name}} at http://127.0.0.1:%{{ENV}}_PORT% ...
-".venv\Scripts\python.exe" -m streamlit run app.py --server.headless=true --server.address=127.0.0.1 --server.port=%{{ENV}}_PORT% --server.maxUploadSize={{max_upload_mb}} --server.fileWatcherType=none --browser.gatherUsageStats=false
+".venv\Scripts\python.exe" -m streamlit run app.py --server.headless=true --server.address=127.0.0.1 --server.port=%{{ENV}}_PORT% --server.maxUploadSize=%{{ENV}}_MAX_UPLOAD_MB% --server.fileWatcherType=none --browser.gatherUsageStats=false
 if errorlevel 1 pause

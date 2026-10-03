@@ -10,7 +10,8 @@ font = "sans serif"
 
 [server]
 headless = true
-maxUploadSize = 50
+# Local default: the computer is the limit. The Docker image sets 50 MB and SIGNAL_PUBLIC=1 for the public demo.
+maxUploadSize = 10000
 fileWatcherType = "none"
 
 [browser]

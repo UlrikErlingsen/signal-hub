@@ -4,26 +4,30 @@ Last updated 2026-10-03. Source of truth for modes and tags: [`apps.yaml`](../ap
 
 | Family | App | Repo | Mode | Hub pins | Notes |
 |---|---|---|---|---|---|
-| Brand | Track Signal | brand-tracking | embedded | v1.1.0 | reference implementation of the contract |
-| Brand | Position Signal | brand-positioning | embedded | v1.2.0 | `positionsignal.plotting` moved to `positionsignal.ui.plotting` |
-| Market | Prospect Signal | b2b-prospecting | embedded | v1.0.0 | Hub mode: offline demo, in-memory DuckDB, no Brreg calls |
-| Market | Listen Signal | media-listening | embedded | v1.0.0 | Hub mode: demo corpus only, no feed collection, lexicon sentiment |
-| Market | Influence Signal | influencer-campaigns | embedded | v1.0.0 | renamed from CreatorSignal; Hub mode: in-memory SQLite workspace |
-| Market | Season Signal | marketing-calendar | embedded | v1.0.0 | Hub mode: campaigns in session memory |
-| Market | Adopt Signal | adoption-forecasting | embedded | v1.2.0 | demos generated in code |
-| Customer | Worth Signal | customer-value-analytics | embedded | v1.2.0 | consolidation with Freddo's signal-core not started (CLAUDE.md §7) |
-| Customer | Segment Signal | customer-segmentation | embedded | v1.2.0 | demos generated in code |
-| Customer | Trace Signal | journey-path-analysis | embedded | v1.1.0 | |
-| Customer | Recommend Signal | recommender-evaluation | embedded | v1.1.0 | |
-| Research | Choice Signal | conjoint-analysis | embedded | v1.3.0 | demo CSVs bundled as package data |
-| Research | Driver Signal | survey-driver-analysis | embedded | v1.1.0 | demos generated in code |
-| Research | Measure Signal | measurement-validation | embedded | v1.3.0 | demo preloads |
-| Research | Text Signal | open-text-analysis | embedded | v1.2.0 | demo preloads |
-| Research | Tag Signal | pricing-analysis | embedded | v1.2.0 | |
-| Decide | Experiment Signal | experiment-analysis | embedded | v1.2.0 | |
-| Decide | Gate Signal | launch-decision-gate | embedded | v1.2.0 | |
-| Decide | Shift Signal | cannibalization-analysis | embedded | v1.0.0 | joined 2026-10-03; scaffolded with `scripts/scaffold_app.py` |
-| Decide | Alloc Signal | marketing-mix-allocation | embedded | v1.2.0 | Dockerfile `USER` line fixed |
+| Brand | Track Signal | brand-tracking | embedded | v1.2.0 | reference implementation of the contract |
+| Brand | Position Signal | brand-positioning | embedded | v1.3.0 | `positionsignal.plotting` moved to `positionsignal.ui.plotting` |
+| Market | Prospect Signal | b2b-prospecting | embedded | v1.1.0 | Hub mode: offline demo, in-memory DuckDB, no Brreg calls |
+| Market | Listen Signal | media-listening | embedded | v1.1.0 | Hub mode: demo corpus only, no feed collection, lexicon sentiment |
+| Market | Influence Signal | influencer-campaigns | embedded | v1.1.0 | renamed from CreatorSignal; Hub mode: in-memory SQLite workspace |
+| Market | Season Signal | marketing-calendar | embedded | v1.1.0 | Hub mode: campaigns in session memory |
+| Market | Adopt Signal | adoption-forecasting | embedded | v1.3.0 | demos generated in code |
+| Market | Rival Signal | competitor-analysis | embedded | v1.1.0 | joined 2026-10-03; competitor evidence, copy-paste AI prompts only |
+| Market | Reach Signal | location-catchment-analysis | embedded | v1.1.0 | joined 2026-10-03; Huff model, blocked engine for large area tables |
+| Customer | Worth Signal | customer-value-analytics | embedded | v1.3.0 | consolidation with Freddo's signal-core not started (CLAUDE.md §7) |
+| Customer | Segment Signal | customer-segmentation | embedded | v1.3.0 | demos generated in code |
+| Customer | Trace Signal | journey-path-analysis | embedded | v1.2.0 |  |
+| Customer | Blueprint Signal | service-blueprinting | embedded | v1.1.0 | joined 2026-10-03; service blueprints, paged board for large cases |
+| Customer | Recommend Signal | recommender-evaluation | embedded | v1.2.0 |  |
+| Research | Choice Signal | conjoint-analysis | embedded | v1.4.0 | demo CSVs bundled as package data |
+| Research | Driver Signal | survey-driver-analysis | embedded | v1.2.0 | demos generated in code |
+| Research | Measure Signal | measurement-validation | embedded | v1.4.0 | demo preloads |
+| Research | Text Signal | open-text-analysis | embedded | v1.3.0 | demo preloads |
+| Research | Tag Signal | pricing-analysis | embedded | v1.3.0 |  |
+| Research | Learn Signal | research-prioritization | embedded | v1.1.0 | joined 2026-10-03; value of information, textbook EVPI/EVSI test |
+| Decide | Experiment Signal | experiment-analysis | embedded | v1.3.0 |  |
+| Decide | Gate Signal | launch-decision-gate | embedded | v1.3.0 |  |
+| Decide | Shift Signal | cannibalization-analysis | embedded | v1.1.0 | joined 2026-10-03; scaffolded with `scripts/scaffold_app.py` |
+| Decide | Alloc Signal | marketing-mix-allocation | embedded | v1.3.0 | Dockerfile `USER` line fixed |
 
 All tags above are pushed to GitHub; the Hub's pinned installs (`requirements-apps.txt`) resolve from them.
 
@@ -33,6 +37,14 @@ All tags above are pushed to GitHub; the Hub's pinned installs (`requirements-ap
 - Phase 4: deploy (`deploy/README.md`) and the tag-bump automation.
 - WorthSignal consolidation with Freddo's signal-core (CLAUDE.md §7): needs a file list approved before touching
   signal-crm.
+
+## Done 2026-10-03
+
+- Four new apps (Rival, Reach, Learn, Blueprint) public at v1.1.0; Shift at v1.1.0. Twenty-four apps.
+- Every app: no built-in data limits when run locally (memory is the limit), demo caps only under `SIGNAL_PUBLIC=1`
+  (APP_CONTRACT section 9). New releases of all 20 earlier apps; the public Hub image sets `SIGNAL_PUBLIC=1`.
+- English app text everywhere; the Norwegian-market tools keep Norwegian demo data with an English note.
+- `scripts/sync_suite.py` and `scripts/scaffold_app.py` (docs/ADDING_AN_APP.md).
 
 ## Done 2026-10-02
 

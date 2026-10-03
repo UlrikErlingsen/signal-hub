@@ -26,10 +26,12 @@ size in prose); `scripts/scaffold_app.py` gives a new app repo the standard file
 [docs/ADDING_AN_APP.md](docs/ADDING_AN_APP.md).
 
 **(2026-10-01)** The sidebar uses the five design families from Claude Design "Unified Signal apps design":
-Brand (Track, Position) · Market (Prospect, Listen, Influence, Season, Adopt) · Customer (Worth, Segment, Trace,
-Recommend) · Research (Choice, Driver, Measure, Text, Tag) · Decide (Experiment, Gate, Shift, Alloc).
+Brand (Track, Position) · Market (Prospect, Listen, Influence, Season, Adopt, Rival, Reach) · Customer (Worth, Segment,
+Trace, Blueprint, Recommend) · Research (Choice, Driver, Measure, Text, Tag, Learn) · Decide (Experiment, Gate, Shift,
+Alloc).
 
-- All 20 apps are embedded. **(2026-10-03)** Shift Signal (`cannibalization-analysis`, menu and product
+- All 24 apps are embedded. **(2026-10-03)** Rival (`competitor-analysis`), Reach (`location-catchment-analysis`),
+  Learn (`research-prioritization`) and Blueprint (`service-blueprinting`) joined at v1.0.0. Shift Signal (`cannibalization-analysis`, menu and product
   cannibalization) joined at v1.0.0. The four Norwegian-market apps (`b2b-prospecting` Prospect Signal,
   `media-listening` Listen Signal, `influencer-campaigns` **Influence Signal** (renamed from CreatorSignal on
   2026-10-01), `marketing-calendar` Season Signal) went public and joined at v1.0.0 on 2026-10-02. In the Hub they
@@ -94,8 +96,10 @@ Every app preloads a deterministic fictional demo. Where cheap, align new demos 
 
 ## 5. Privacy and safety
 
-No telemetry, analytics scripts or accounts. Uploads stay in session memory, never on the server's disk; upload caps
-match the apps. No external AI calls from the Hub. Each app's own rules still apply (Prospect Signal never stores
+No telemetry, analytics scripts or accounts. Uploads stay in session memory, never on the server's disk.
+**(2026-10-03)** Upload caps: `max_upload_mb` in apps.yaml (1000 MB for data-heavy tools, 50 MB for small structured
+inputs) when run locally; every launcher takes `<APP>_MAX_UPLOAD_MB`, Docker images `STREAMLIT_SERVER_MAX_UPLOAD_SIZE`.
+The Hub runs locally at 1000 MB and its Docker image defaults to 50 MB for the public demo. No external AI calls from the Hub. Each app's own rules still apply (Prospect Signal never stores
 people; Influence Signal compliance is "checklist support, not legal advice").
 
 ## 6. Versioning and updates

@@ -6,6 +6,15 @@ All notable changes to Signal Hub are documented here.
 
 ### Added
 
+- Rival Signal (`competitor-analysis`, Market), Reach Signal (`location-catchment-analysis`, Market), Learn Signal
+  (`research-prioritization`, Research) and Blueprint Signal (`service-blueprinting`, Customer) at v1.0.0:
+  twenty-four apps.
+- Data limits, local vs public (APP_CONTRACT section 9):
+  - Run on your own computer, the tools have no built-in data limits; memory is the limit.
+  - Uploads default to 10 GB (`max_upload_mb: 10000`, `SIGNALHUB_MAX_UPLOAD_MB`).
+  - The Hub's Docker image is the public demo: 50 MB uploads and `SIGNAL_PUBLIC=1`, which turns on every tool's demo
+    caps.
+  - The app template's launchers and Dockerfile follow the same pattern.
 - Shift Signal (`cannibalization-analysis`, Decide family) at v1.0.0: twenty apps.
 - `scripts/sync_suite.py`: one command that writes every list derived from `apps.yaml`:
   - the `signal_theme.APPS` block and the requirement pins;

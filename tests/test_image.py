@@ -49,3 +49,14 @@ def test_visitors_never_see_tracebacks() -> None:
     config = (ROOT / ".streamlit" / "config.toml").read_text(encoding="utf-8")
     assert re.search(r'^showErrorDetails = "none"$', config, re.M)
     assert "--client.showErrorDetails=none" in (ROOT / "Dockerfile").read_text(encoding="utf-8")
+
+
+def test_upload_cap_is_set_by_environment_in_the_image_and_large_locally() -> None:
+    dockerfile = (ROOT / "Dockerfile").read_text(encoding="utf-8")
+    assert "STREAMLIT_SERVER_MAX_UPLOAD_SIZE=50" in dockerfile  # public demo default; a deployment overrides it
+    assert "--server.maxUploadSize" not in dockerfile  # a CLI flag would beat the environment variable
+    config = (ROOT / ".streamlit" / "config.toml").read_text(encoding="utf-8")
+    assert re.search(r"^maxUploadSize = 10000$", config, re.M)
+    assert "SIGNAL_PUBLIC=1" in dockerfile  # the apps' demo limits are on in the public image
+    for launcher in ("run_app.bat", "run_app.command"):
+        assert "SIGNALHUB_MAX_UPLOAD_MB" in (ROOT / launcher).read_text(encoding="utf-8"), launcher

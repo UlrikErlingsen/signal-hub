@@ -8,9 +8,9 @@
   <a href="LICENSE"><img alt="License: AGPL-3.0-or-later" src="https://img.shields.io/badge/License-AGPL--3.0--or--later-645c50"></a>
 </p>
 
-<p align="center"><strong>Twenty small apps. Each answers one marketing question, shows its method, and runs on your own machine.</strong></p>
+<p align="center"><strong>Twenty-four small apps. Each answers one marketing question, shows its method, and runs on your own machine.</strong></p>
 
-**Signal Hub** is one Streamlit app that puts all twenty Signal tools behind a single link: a front page, a sidebar menu by
+**Signal Hub** is one Streamlit app that puts all twenty-four Signal tools behind a single link: a front page, a sidebar menu by
 family, and every released tool running inside it with its fictional demo already loaded. It assembles apps that
 already exist. Each tool stays its own repository and Python package, and the Hub pins released versions.
 
@@ -35,6 +35,8 @@ database, or built-in persistence. Uploads stay in your session's memory.
 | <img src="signal-theme/assets/marks/influencesignal-mark-64.png" width="28" alt=""> | **Influence Signal** | Which creators delivered, and was every post labelled properly? | [influencer-campaigns](https://github.com/UlrikErlingsen/influencer-campaigns) |
 | <img src="signal-theme/assets/marks/seasonsignal-mark-64.png" width="28" alt=""> | **Season Signal** | What does the Norwegian marketing year look like, worked backwards? | [marketing-calendar](https://github.com/UlrikErlingsen/marketing-calendar) |
 | <img src="signal-theme/assets/marks/adoptsignal-mark-64.png" width="28" alt=""> | **Adopt Signal** | When will a new product be adopted? | [adoption-forecasting](https://github.com/UlrikErlingsen/adoption-forecasting) |
+| <img src="signal-theme/assets/marks/rivalsignal-mark-64.png" width="28" alt=""> | **Rival Signal** | Which rivals matter, and how could they respond? | [competitor-analysis](https://github.com/UlrikErlingsen/competitor-analysis) |
+| <img src="signal-theme/assets/marks/reachsignal-mark-64.png" width="28" alt=""> | **Reach Signal** | Where could a new location reach, and how would it share demand with existing sites? | [location-catchment-analysis](https://github.com/UlrikErlingsen/location-catchment-analysis) |
 
 ## <img src="https://img.shields.io/badge/-%20-aa5d83?style=flat-square" height="14" alt=""> Customer
 
@@ -43,6 +45,7 @@ database, or built-in persistence. Uploads stay in your session's memory.
 | <img src="signal-theme/assets/marks/worthsignal-mark-64.png" width="28" alt=""> | **Worth Signal** | What are customers and relationships worth? | [customer-value-analytics](https://github.com/UlrikErlingsen/customer-value-analytics) |
 | <img src="signal-theme/assets/marks/segmentsignal-mark-64.png" width="28" alt=""> | **Segment Signal** | Do customers form stable, useful groups? | [customer-segmentation](https://github.com/UlrikErlingsen/customer-segmentation) |
 | <img src="signal-theme/assets/marks/tracesignal-mark-64.png" width="28" alt=""> | **Trace Signal** | How do logged customer journeys actually unfold? | [journey-path-analysis](https://github.com/UlrikErlingsen/journey-path-analysis) |
+| <img src="signal-theme/assets/marks/blueprintsignal-mark-64.png" width="28" alt=""> | **Blueprint Signal** | How is the customer experience actually delivered, and where do the handoffs fail? | [service-blueprinting](https://github.com/UlrikErlingsen/service-blueprinting) |
 | <img src="signal-theme/assets/marks/recommendsignal-mark-64.png" width="28" alt=""> | **Recommend Signal** | Which recommendation policy should be tested live? | [recommender-evaluation](https://github.com/UlrikErlingsen/recommender-evaluation) |
 
 ## <img src="https://img.shields.io/badge/-%20-a06f1f?style=flat-square" height="14" alt=""> Research
@@ -54,6 +57,7 @@ database, or built-in persistence. Uploads stay in your session's memory.
 | <img src="signal-theme/assets/marks/measuresignal-mark-64.png" width="28" alt=""> | **Measure Signal** | Does a multi-item score have a defensible structure? | [measurement-validation](https://github.com/UlrikErlingsen/measurement-validation) |
 | <img src="signal-theme/assets/marks/textsignal-mark-64.png" width="28" alt=""> | **Text Signal** | What recurring patterns appear in open-ended responses? | [open-text-analysis](https://github.com/UlrikErlingsen/open-text-analysis) |
 | <img src="signal-theme/assets/marks/tagsignal-mark-64.png" width="28" alt=""> | **Tag Signal** | What price range is supported, and how does profit move? | [pricing-analysis](https://github.com/UlrikErlingsen/pricing-analysis) |
+| <img src="signal-theme/assets/marks/learnsignal-mark-64.png" width="28" alt=""> | **Learn Signal** | Which uncertainty is worth paying to research before you decide? | [research-prioritization](https://github.com/UlrikErlingsen/research-prioritization) |
 
 ## <img src="https://img.shields.io/badge/-%20-4f80a2?style=flat-square" height="14" alt=""> Decide
 
@@ -90,6 +94,12 @@ python -m streamlit run hub/app.py
 
 The Hub prefers local port 8610. The launchers accept `SIGNALHUB_PORT`, and `SIGNALHUB_DEBUG=1` shows technical
 details when a tool fails.
+
+**Large files.** Run on your own computer, the tools have no built-in data limits: memory is the limit. Uploads go
+up to 10 GB by default (`SIGNALHUB_MAX_UPLOAD_MB` changes it), big tables on screen show a shortened view with a
+note, and every calculation and export uses all of the data. The public demo image sets `SIGNAL_PUBLIC=1`, which
+turns on demo limits in every tool; an internal company deployment runs it with
+`-e SIGNAL_PUBLIC=0 -e STREAMLIT_SERVER_MAX_UPLOAD_SIZE=10000` (see [deploy/README.md](deploy/README.md)).
 
 ### Docker
 

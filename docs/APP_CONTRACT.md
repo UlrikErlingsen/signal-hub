@@ -114,3 +114,26 @@ Standalone behaviour is unchanged. Test both modes (monkeypatch the variable).
 
 Apps with their own multipage navigation (`st.navigation` + `pages/`) keep it for the standalone `app.py`; `render()`
 draws the same page functions behind a namespaced sidebar radio instead, because the Hub owns `st.navigation`.
+
+## 9. Data limits: local vs public (`SIGNAL_PUBLIC=1`)
+
+Run on someone's own computer (standalone, a local Hub, or an internal company deployment), an app has **no
+built-in limits** on file size, rows, cells, items or records. The computer's memory and processor are the limit.
+
+- Streamlit's upload cap is 10,000 MB by default (`max_upload_mb` in `apps.yaml`, written to `.streamlit/config.toml`;
+  launchers take `<APP>_MAX_UPLOAD_MB`, Docker `STREAMLIT_SERVER_MAX_UPLOAD_SIZE`).
+- A method may keep a limit only where it is mathematically unavoidable (e.g. exhaustive enumeration that grows
+  combinatorially), and should prefer a better algorithm or a visible approximation over refusing.
+- Running out of memory is reported plainly (`MemoryError` and allocation errors around loading and heavy compute
+  become a message such as "not enough memory for this file on this computer"), never a crash or a hang.
+- Drawing millions of rows or points in the browser is a browser and websocket limit (`server.maxMessageSize`), not a
+  data limit: on-screen tables and charts show a truncated or aggregated view with a visible note, while every
+  calculation and export uses the full data.
+
+A **public demo** sets `SIGNAL_PUBLIC=1` (the Hub's Docker image does). Then the app applies hard caps that protect a
+shared server: upload bytes, rows or cells, records, pasted text (including AI replies) and expensive compute such as
+bootstrap draws. Keep all caps in one module (e.g. `src/<package>/limits.py`, unbounded unless `SIGNAL_PUBLIC == "1"`);
+a capped message says it is a demo limit and that the downloaded app has none. `SIGNAL_PUBLIC` is independent of
+`SIGNAL_HUB` (session-only storage, no writes, no network): a company can run the Hub internally without demo caps.
+
+Tests: one that local mode accepts input beyond the demo caps, one that `SIGNAL_PUBLIC=1` enforces them.

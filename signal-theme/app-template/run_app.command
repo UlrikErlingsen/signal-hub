@@ -74,7 +74,7 @@ python -m streamlit run app.py \
   --server.headless=true \
   --server.address=127.0.0.1 \
   --server.port="$PORT" \
-  --server.maxUploadSize={{max_upload_mb}} \
+  --server.maxUploadSize="${{{ENV}}_MAX_UPLOAD_MB:-{{max_upload_mb}}}" \
   --server.fileWatcherType=none \
   --browser.gatherUsageStats=false &
 APP_PID=$!

@@ -18,7 +18,9 @@
 # methods   2-4 method chips for the cards and the README banner
 # tagline   the banner and theme tagline (signal_theme.APPS is generated from this file)
 # topics    2-3 GitHub method topics (the suite topics are added for every repo)
-# max_upload_mb  the app's own Streamlit upload cap (written to its .streamlit/config.toml by sync_theme)
+# max_upload_mb  Streamlit's upload cap when run locally (written to the app's .streamlit/config.toml by sync_suite).
+#           10000 everywhere: locally the computer is the limit (APP_CONTRACT section 9). Launchers take
+#           <APP>_MAX_UPLOAD_MB, Docker STREAMLIT_SERVER_MAX_UPLOAD_SIZE. Public demos set SIGNAL_PUBLIC=1 instead.
 
 - slug: track
   key: track
@@ -26,11 +28,11 @@
   repo: brand-tracking
   dist: tracksignal
   package: tracksignal
-  tag: v1.1.0
+  tag: v1.2.0
   family: Brand
   mode: embedded
   public: true
-  max_upload_mb: 50
+  max_upload_mb: 10000
   question: Is the brand moving, or is the tracker just noisy?
   one_liner: Brand-tracking waves compared with intervals, multiple-comparison control and practical thresholds, so real movement is separated from sampling noise.
   methods: [Wilson intervals, Wave contrasts, BH control]
@@ -43,11 +45,11 @@
   repo: brand-positioning
   dist: positionsignal
   package: positionsignal
-  tag: v1.2.0
+  tag: v1.3.0
   family: Brand
   mode: embedded
   public: true
-  max_upload_mb: 200
+  max_upload_mb: 10000
   question: Where do brands sit relative to competitors?
   one_liner: Auditable positioning across brands, waves and segments, with map fidelity, association ownership and POP/POD evidence beside the picture.
   methods: [PCA, Biplot, POP / POD]
@@ -60,11 +62,11 @@
   repo: b2b-prospecting
   dist: prospectsignal
   package: prospectsignal
-  tag: v1.0.0
+  tag: v1.1.0
   family: Market
   mode: embedded
   public: true
-  max_upload_mb: 50
+  max_upload_mb: 10000
   question: Which Norwegian companies fit your ideal customer, and which first?
   one_liner: Ideal-customer filters, market size and shortlists built from open Brønnøysund company data, run locally.
   methods: [Brønnøysund, ICP filters, Shortlists]
@@ -77,11 +79,11 @@
   repo: media-listening
   dist: listensignal
   package: listensignal
-  tag: v1.0.0
+  tag: v1.1.0
   family: Market
   mode: embedded
   public: true
-  max_upload_mb: 10
+  max_upload_mb: 10000
   question: Who is talking about the brand in Norwegian media, and in what tone?
   one_liner: Mentions, share of voice and Norwegian-language sentiment from media and social sources, run locally.
   methods: [Mentions, Share of voice, Norwegian sentiment]
@@ -94,11 +96,11 @@
   repo: influencer-campaigns
   dist: influencesignal
   package: influencesignal
-  tag: v1.0.0
+  tag: v1.1.0
   family: Market
   mode: embedded
   public: true
-  max_upload_mb: 20
+  max_upload_mb: 10000
   question: Which creators delivered, and was every post labelled properly?
   one_liner: A local-first influencer campaign manager for the Norwegian market, with an advertising-label checklist on every post.
   methods: [Campaigns, Creator results, Ad labelling]
@@ -111,10 +113,11 @@
   repo: marketing-calendar
   dist: seasonsignal
   package: seasonsignal
-  tag: v1.0.0
+  tag: v1.1.0
   family: Market
   mode: embedded
   public: true
+  max_upload_mb: 10000
   question: What does the Norwegian marketing year look like, worked backwards?
   one_liner: The Norwegian marketing year, worked backwards from the dates that matter into a campaign plan and an .ics file.
   methods: [Calendar, Lead times, .ics export]
@@ -127,16 +130,50 @@
   repo: adoption-forecasting
   dist: adoption-forecasting
   package: adoptsignal
-  tag: v1.2.0
+  tag: v1.3.0
   family: Market
   mode: embedded
   public: true
-  max_upload_mb: 200
+  max_upload_mb: 10000
   question: When will a new product be adopted?
   one_liner: Bass diffusion planning from published analogies, history fitting and explicit warnings when a pre-peak forecast cannot identify the ceiling.
   methods: [Bass diffusion, Scenarios, Fitting]
   tagline: "Know when the market will follow"
   topics: [bass-diffusion, forecasting]
+
+- slug: rival
+  key: rival
+  product: Rival Signal
+  repo: competitor-analysis
+  dist: rivalsignal
+  package: rivalsignal
+  tag: v1.1.0
+  family: Market
+  mode: embedded
+  public: true
+  max_upload_mb: 10000
+  question: Which rivals matter, and how could they respond?
+  one_liner: Review competitor research from desk work or your own AI source by source, map where rivals overlap with you, and stress-test their likely responses before treating a story as fact.
+  methods: [Source review, Rival map, Response scenarios]
+  tagline: "Competitor evidence. Better response questions."
+  topics: [competitive-analysis, competitive-intelligence]
+
+- slug: reach
+  key: reach
+  product: Reach Signal
+  repo: location-catchment-analysis
+  dist: reachsignal
+  package: reachsignal
+  tag: v1.1.0
+  family: Market
+  mode: embedded
+  public: true
+  max_upload_mb: 10000
+  question: Where could a new location reach, and how would it share demand with existing sites?
+  one_liner: Compare candidate sites with a Huff choice model on distance or travel time, with customer areas, competitors and every assumption in view.
+  methods: [Huff model, Catchment areas, Site comparison]
+  tagline: "Where could your next location reach?"
+  topics: [location-analytics, huff-model]
 
 - slug: worth
   key: worth
@@ -144,11 +181,11 @@
   repo: customer-value-analytics
   dist: customer-value-analytics
   package: cva
-  tag: v1.2.0
+  tag: v1.3.0
   family: Customer
   mode: embedded
   public: true
-  max_upload_mb: 200
+  max_upload_mb: 10000
   question: What are customers and relationships worth?
   one_liner: Customer value, retention and marketing ROI, turned into guided decisions instead of another spreadsheet archaeology project.
   methods: [RFM, CLV, Retention, ROI]
@@ -161,11 +198,11 @@
   repo: customer-segmentation
   dist: customer-segmentation
   package: segmentsignal
-  tag: v1.2.0
+  tag: v1.3.0
   family: Customer
   mode: embedded
   public: true
-  max_upload_mb: 200
+  max_upload_mb: 10000
   question: Do customers form stable, useful groups?
   one_liner: Customer segmentation that compares methods, checks whether memberships survive resampling, and is allowed to say no reliable solution exists.
   methods: [Clustering, Stability, Profiles]
@@ -178,16 +215,33 @@
   repo: journey-path-analysis
   dist: tracesignal
   package: tracesignal
-  tag: v1.1.0
+  tag: v1.2.0
   family: Customer
   mode: embedded
   public: true
-  max_upload_mb: 50
+  max_upload_mb: 10000
   question: How do logged customer journeys actually unfold?
   one_liner: Descriptive journey evidence from event logs - transitions, path support, drop-off and positional roles, with a transparent Markov sensitivity check.
   methods: [Transitions, Drop-off, Markov sensitivity]
   tagline: "Where do journeys flow, stall, and end?"
   topics: [customer-journey, markov-chain]
+
+- slug: blueprint
+  key: blueprint
+  product: Blueprint Signal
+  repo: service-blueprinting
+  dist: blueprintsignal
+  package: blueprintsignal
+  tag: v1.1.0
+  family: Customer
+  mode: embedded
+  public: true
+  max_upload_mb: 10000
+  question: How is the customer experience actually delivered, and where do the handoffs fail?
+  one_liner: Map one service from customer actions through frontstage, backstage and support work, mark what is evidence and what is assumption, and plan improvements to the handoffs.
+  methods: [Service layers, Handoff review, Improvement plan]
+  tagline: "Make the service behind the experience visible."
+  topics: [service-design, service-blueprint]
 
 - slug: recommend
   key: recommend
@@ -195,11 +249,11 @@
   repo: recommender-evaluation
   dist: recommendsignal
   package: recommendsignal
-  tag: v1.1.0
+  tag: v1.2.0
   family: Customer
   mode: embedded
   public: true
-  max_upload_mb: 50
+  max_upload_mb: 10000
   question: Which recommendation policy should be tested live?
   one_liner: Offline evaluation of recommendation policies with temporal splits, covering accuracy, novelty, concentration and cold-start evidence.
   methods: [Recall@K, NDCG@K, Cold start]
@@ -212,11 +266,11 @@
   repo: conjoint-analysis
   dist: conjoint-analysis
   package: choicesignal
-  tag: v1.3.0
+  tag: v1.4.0
   family: Research
   mode: embedded
   public: true
-  max_upload_mb: 200
+  max_upload_mb: 10000
   question: How do product attributes drive choice?
   one_liner: Ratings-based conjoint analysis with respondent-level part-worths, design checks, attribute importance and preference scenarios.
   methods: [Conjoint, Part-worths, Simulation]
@@ -229,11 +283,11 @@
   repo: survey-driver-analysis
   dist: driversignal
   package: driversignal
-  tag: v1.1.0
+  tag: v1.2.0
   family: Research
   mode: embedded
   public: true
-  max_upload_mb: 200
+  max_upload_mb: 10000
   question: Which measured experiences move with satisfaction?
   one_liner: Survey driver analysis that separates relative importance from conditional direction and turns the ranking into a testable hypothesis.
   methods: [Shapley / LMG, HC3, NPS]
@@ -246,11 +300,11 @@
   repo: measurement-validation
   dist: measuresignal
   package: measuresignal
-  tag: v1.3.0
+  tag: v1.4.0
   family: Research
   mode: embedded
   public: true
-  max_upload_mb: 50
+  max_upload_mb: 10000
   question: Does a multi-item score have a defensible structure?
   one_liner: Measurement diagnostics with factor structure, reliability, a frozen holdout plan and an invariance gate before cross-group comparisons.
   methods: [EFA, Alpha + omega, Invariance gate]
@@ -263,11 +317,11 @@
   repo: open-text-analysis
   dist: textsignal
   package: textsignal
-  tag: v1.2.0
+  tag: v1.3.0
   family: Research
   mode: embedded
   public: true
-  max_upload_mb: 50
+  max_upload_mb: 10000
   question: What recurring patterns appear in open-ended responses?
   one_liner: Open-text evidence with corpus audits, structured comparisons, stable NMF patterns, validated sentiment checks and a human codebook handoff.
   methods: [Stable NMF, Keyness, Human coding]
@@ -280,16 +334,33 @@
   repo: pricing-analysis
   dist: tagsignal
   package: tagsignal
-  tag: v1.2.0
+  tag: v1.3.0
   family: Research
   mode: embedded
   public: true
-  max_upload_mb: 50
+  max_upload_mb: 10000
   question: What price range is supported, and how does profit move?
   one_liner: Pricing evidence from price experiments, sales history or willingness to pay, fed into margin economics with the uncertainty intact.
   methods: [Price tests, Elasticity, WTP curves]
   tagline: "What price range is supported, and how does profit move?"
   topics: [pricing, price-elasticity]
+
+- slug: learn
+  key: learn
+  product: Learn Signal
+  repo: research-prioritization
+  dist: learnsignal
+  package: learnsignal
+  tag: v1.1.0
+  family: Research
+  mode: embedded
+  public: true
+  max_upload_mb: 10000
+  question: Which uncertainty is worth paying to research before you decide?
+  one_liner: Frame a decision as actions, states and payoffs, then compare the expected value of information from proposed studies with what they cost.
+  methods: [Decision tables, Bayesian updating, Value of information]
+  tagline: "Which uncertainty is worth researching?"
+  topics: [value-of-information, decision-analysis]
 
 - slug: experiment
   key: experiment
@@ -297,11 +368,11 @@
   repo: experiment-analysis
   dist: experimentsignal
   package: experimentsignal
-  tag: v1.2.0
+  tag: v1.3.0
   family: Decide
   mode: embedded
   public: true
-  max_upload_mb: 50
+  max_upload_mb: 10000
   question: Did the treatment cause a practically meaningful change?
   one_liner: Decision support for randomized experiments with continuous or binary outcomes, design checks, robust intervals and practical thresholds.
   methods: [Randomization, Robust intervals, Power]
@@ -314,11 +385,11 @@
   repo: launch-decision-gate
   dist: gatesignal
   package: gatesignal
-  tag: v1.2.0
+  tag: v1.3.0
   family: Decide
   mode: embedded
   public: true
-  max_upload_mb: 50
+  max_upload_mb: 10000
   question: Does a concept deserve the next investment?
   one_liner: New-product gate support that separates criteria, evidence, constraints and economics, plus extension and reputation exposure.
   methods: [Gate criteria, Scenario NPV, Risk response]
@@ -331,11 +402,11 @@
   repo: cannibalization-analysis
   dist: shiftsignal
   package: shiftsignal
-  tag: v1.0.0
+  tag: v1.1.0
   family: Decide
   mode: embedded
   public: true
-  max_upload_mb: 20
+  max_upload_mb: 10000
   question: Does a launch grow the portfolio, or move existing demand around?
   one_liner: Plan where a new item's volume will come from, then compare the launch against unaffected locations, with contribution and uncertainty kept in view.
   methods: [Source of volume, Difference-in-differences, Location bootstrap]
@@ -348,11 +419,11 @@
   repo: marketing-mix-allocation
   dist: allocsignal
   package: allocsignal
-  tag: v1.2.0
+  tag: v1.3.0
   family: Decide
   mode: embedded
   public: true
-  max_upload_mb: 200
+  max_upload_mb: 10000
   question: Where should the next marketing budget go?
   one_liner: Diminishing-return planning with real constraints, panel evidence and a digital-economics audit for challenging an optimized media plan.
   methods: [Response curves, Optimization, Attribution audit]

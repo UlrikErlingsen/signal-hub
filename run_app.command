@@ -74,7 +74,7 @@ python -m streamlit run hub/app.py \
   --server.headless=true \
   --server.address=127.0.0.1 \
   --server.port="$PORT" \
-  --server.maxUploadSize=50 \
+  --server.maxUploadSize="${SIGNALHUB_MAX_UPLOAD_MB:-10000}" \
   --server.fileWatcherType=none \
   --browser.gatherUsageStats=false &
 APP_PID=$!

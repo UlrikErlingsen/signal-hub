@@ -88,8 +88,8 @@ def _validate(raw: dict, index: int) -> App:
     if not raw["product"].endswith(" Signal"):
         raise RegistryError(f"{where}: product must be '<Prefix> Signal'")
     cap = raw.get("max_upload_mb")
-    if cap is not None and (not isinstance(cap, int) or not 1 <= cap <= 1000):
-        raise RegistryError(f"{where}: max_upload_mb must be a whole number of MB between 1 and 1000")
+    if cap is not None and (not isinstance(cap, int) or not 1 <= cap <= 100_000):
+        raise RegistryError(f"{where}: max_upload_mb must be a whole number of MB between 1 and 100000")
     data = dict(raw)
     data["methods"] = tuple(raw.get("methods") or ())
     data["topics"] = tuple(raw.get("topics") or ())
