@@ -97,9 +97,9 @@ Every app preloads a deterministic fictional demo. Where cheap, align new demos 
 ## 5. Privacy and safety
 
 No telemetry, analytics scripts or accounts. Uploads stay in session memory, never on the server's disk.
-**(2026-10-03)** Upload caps: `max_upload_mb` in apps.yaml (1000 MB for data-heavy tools, 50 MB for small structured
-inputs) when run locally; every launcher takes `<APP>_MAX_UPLOAD_MB`, Docker images `STREAMLIT_SERVER_MAX_UPLOAD_SIZE`.
-The Hub runs locally at 1000 MB and its Docker image defaults to 50 MB for the public demo. No external AI calls from the Hub. Each app's own rules still apply (Prospect Signal never stores
+**(2026-10-03)** Data limits (APP_CONTRACT section 9): run locally, no app has built-in limits (memory is the limit;
+uploads default to 10 GB via `max_upload_mb: 10000`, `<APP>_MAX_UPLOAD_MB`, `STREAMLIT_SERVER_MAX_UPLOAD_SIZE`). Hard caps
+apply only under `SIGNAL_PUBLIC=1`, which the Hub's public Docker image sets (with 50 MB uploads). No external AI calls from the Hub. Each app's own rules still apply (Prospect Signal never stores
 people; Influence Signal compliance is "checklist support, not legal advice").
 
 ## 6. Versioning and updates
