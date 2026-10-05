@@ -13,6 +13,7 @@ In this repo
 In the sibling clones (skipped when a clone is missing, e.g. on CI)
     <app>/README.md                   the "Where this fits in Signal" table (scripts/sync_readme_suite.py)
     <app>/src/<pkg>/ui/...            the theme copy, marks, banner, social preview, .streamlit (scripts/sync_theme.py)
+    <app>/.github/dependabot.yml      the shared Dependabot config (signal-theme/app-template/.github/dependabot.yml)
     UlrikErlingsen/README.md          the profile README
 
 Usage (from the signal-hub folder; app clones sit next to it):
@@ -40,6 +41,7 @@ from hub.registry import FAMILIES, GITHUB, App, by_family, count_word, load  # n
 from scripts import gen_requirements, sync_readme_suite, sync_theme  # noqa: E402
 
 THEME = HUB / "signal-theme" / "signal_theme.py"
+DEPENDABOT = HUB / "signal-theme" / "app-template" / ".github" / "dependabot.yml"
 PROFILE_REPO = CLONES / "UlrikErlingsen" / "README.md"
 APPS_START = "<!-- signal-apps:start (generated from apps.yaml by scripts/sync_suite.py) -->"
 APPS_END = "<!-- signal-apps:end -->"
@@ -146,6 +148,7 @@ def plan(hub_only: bool = False) -> dict[Path, bytes]:
                                                                 len(apps)),
         HUB / "docs" / "github" / "set_repo_metadata.ps1": metadata_ps1(apps),
         HUB / "signal-theme" / "topics.txt": topics_txt(apps),
+        HUB / ".github" / "dependabot.yml": _read(DEPENDABOT),
         **gen_requirements.render(),
     }
     if not hub_only:
@@ -162,6 +165,7 @@ def plan(hub_only: bool = False) -> dict[Path, bytes]:
                     files[readme] = sync_readme_suite.rewrite(_read(readme), sync_readme_suite.block(apps, a))
                 except ValueError as exc:
                     print(f"skip   {a.repo}/README.md: {exc}")
+            files[repo / ".github" / "dependabot.yml"] = _read(DEPENDABOT)
             # The theme copy carries the APPS block generated above, not the file on disk.
             planned = sync_theme.planned_files(entries[a.slug], theme_text=files[THEME])
             files.update(planned)
