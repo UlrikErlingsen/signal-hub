@@ -113,7 +113,7 @@ PR. Freddo pins the same app tags as the Hub (e.g. Worth Signal); keep both in s
 
 `customer-value-analytics` (`cva`) becomes Worth Signal's single home. Move the general calculators and retention
 models from `signal-crm/packages/signal-core/src/signal_core/worth/` into `src/cva/` (not `ui/`, no Streamlit), with
-their pinned lecture/exam tests. signal-core keeps the Freddo-specific layer and pins the new cva tag. Coordinate with
+their tests. signal-core keeps the Freddo-specific layer and pins the new cva tag. Coordinate with
 the Freddo agent; **never edit `signal-crm` without listing every file you would touch first.**
 
 ## 8. Deployment
